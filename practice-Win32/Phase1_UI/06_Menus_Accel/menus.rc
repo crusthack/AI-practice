@@ -1,0 +1,27 @@
+#include <windows.h>
+#include "resource.h"
+
+IDM_MAIN_MENU MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N", IDM_FILE_NEW
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit\tAlt+F4", IDM_FILE_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toggle Status\tCtrl+T", IDM_VIEW_TOGGLE_STATUS
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About\tF1", IDM_HELP_ABOUT
+    END
+END
+
+IDA_MAIN_ACCEL ACCELERATORS
+BEGIN
+    "N", IDM_FILE_NEW, VIRTKEY, CONTROL
+    "T", IDM_VIEW_TOGGLE_STATUS, VIRTKEY, CONTROL
+    VK_F1, IDM_HELP_ABOUT, VIRTKEY
+END

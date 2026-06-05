@@ -1,0 +1,50 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="1. Hello Window/1. Hello Window.vcxproj" Id="2ada07a4-03ce-4512-bc79-b99e3c559bb1" />
+  <Project Path="2. COM/COM.vcxproj" Id="fc703a74-4de9-44e8-951a-7f39a5e031eb" />
+  <Project Path="3. Graphics/Graphics.vcxproj" Id="13cb732c-04ec-40a7-89be-494caa185469" />
+  <Project Path="4. ProcessInput/ProcessInput.vcxproj" Id="c5ed0d84-6f13-47e1-99d0-220019b4d448" />
+  <Project Path="Phase1_UI/01_WindowBasics/01_WindowBasics.vcxproj" Id="7d51ee35-72df-470f-90f2-378198c9f5a1" />
+  <Project Path="Phase1_UI/02_MessageLoop/02_MessageLoop.vcxproj" Id="dfdf9255-3f2e-4671-8488-9a3dd063998f" />
+  <Project Path="Phase1_UI/03_GDI_Painting/03_GDI_Painting.vcxproj" Id="72ad118f-8f88-44b1-9a31-2dcc48fc97a2" />
+  <Project Path="Phase1_UI/04_Controls/04_Controls.vcxproj" Id="30e63447-a272-4978-930c-08af8ce7251c" />
+  <Project Path="Phase1_UI/05_Dialogs/05_Dialogs.vcxproj" Id="bc6581b2-bc84-4776-b472-c91899caf772" />
+  <Project Path="Phase1_UI/06_Menus_Accel/06_Menus_Accel.vcxproj" Id="6e3cc047-4562-4aec-8110-54624c639549" />
+  <Project Path="Phase2_AdvancedUI/07_CommonControls/07_CommonControls.vcxproj" Id="e0d98d4b-203b-40e4-b140-59862ff0ca19" />
+  <Project Path="Phase2_AdvancedUI/08_OwnerDraw/08_OwnerDraw.vcxproj" Id="9076debb-b60f-4b61-9a80-f83a0675e88a" />
+  <Project Path="Phase2_AdvancedUI/09_ShellIntegration/09_ShellIntegration.vcxproj" Id="2e96d707-a072-43e7-998f-ceac611c00a5" />
+  <Project Path="Phase3_System/10_FileIO/10_FileIO.vcxproj" Id="4db83ab3-f2c6-4672-b75f-bb552147e874" />
+  <Project Path="Phase3_System/11_ProcessThread/11_ProcessThread.vcxproj" Id="9e4aa480-fd62-43fa-ae63-a7cfc0b8da8b" />
+  <Project Path="Phase3_System/12_Synchronization/12_Synchronization.vcxproj" Id="a680dd7d-7ccd-4a7e-b083-c8087073bd3d" />
+  <Project Path="Phase3_System/13_Memory/13_Memory.vcxproj" Id="ef61c382-169e-4af4-9e12-b668a7ee4391" />
+  <Project Path="Phase3_System/14_Registry/14_Registry.vcxproj" Id="ee78f55f-51b1-4b6b-a77d-7703a94d79e2" />
+  <Project Path="Phase3_System/15_ServiceControl/15_ServiceControl.vcxproj" Id="9afa2302-8016-4a55-9d56-43f1ce605748" />
+  <Project Path="Phase4_COM/16_COM_Basics/16_COM_Basics.vcxproj" Id="019d62c4-d1ea-43a5-870c-44077e0d922a" />
+  <Project Path="Phase4_COM/17_COM_Advanced/17_COM_Advanced.vcxproj" Id="f43eb336-294e-4428-bcfc-1c16df44e0d0" />
+  <Project Path="Phase4_COM/18_ATL_WRL/18_ATL_WRL.vcxproj" Id="f2cfd57e-4e0b-4019-92e8-6ccab5039ea6" />
+  <Project Path="Phase4_COM/19_Automation/19_Automation.vcxproj" Id="60a9f0fd-4726-47ff-978c-c0b264132c29" />
+  <Project Path="Phase4_COM/20_WinRT_Basics/20_WinRT_Basics.vcxproj" Id="d3c57c8d-8990-4d55-a59c-ebf3d5c15660" />
+  <Project Path="Phase4_COM/21_DCOM_RPC/21_DCOM_RPC.vcxproj" Id="48c4c182-6514-43bb-9feb-d973bf98b499" />
+  <Project Path="Phase4_COM/22_DirectShow/22_DirectShow.vcxproj" Id="be70e1bf-0c5d-4f5c-8ea9-fc211bc2c23a" />
+  <Project Path="Phase4_COM/23_MF_WIC/23_MF_WIC.vcxproj" Id="9cf4a78b-26f3-4454-99dd-25afdeeb76bf" />
+  <Project Path="Phase4_COM/24_D2D_DWrite/24_D2D_DWrite.vcxproj" Id="7f6fe2ba-3f53-458d-a343-762b8654fd2e" />
+  <Project Path="Phase5_Security_Net/25_Security/25_Security.vcxproj" Id="f5233b53-c1f9-418c-b6ff-70a0f471689d" />
+  <Project Path="Phase5_Security_Net/26_Impersonation/26_Impersonation.vcxproj" Id="08a83eb6-2ac8-472d-8942-210834b24671" />
+  <Project Path="Phase5_Security_Net/27_Cryptography/27_Cryptography.vcxproj" Id="61b7da74-4f5d-4d19-b49f-57d771e16560" />
+  <Project Path="Phase5_Security_Net/28_Winsock2/28_Winsock2.vcxproj" Id="353f3a3a-2a89-4b4f-91c3-257b623802f4" />
+  <Project Path="Phase5_Security_Net/29_NamedPipe_MM/29_NamedPipe_MM.vcxproj" Id="4e62624b-a512-4958-b5d1-d353e1ed6837" />
+  <Project Path="Phase5_Security_Net/30_Mailslot_LPC/30_Mailslot_LPC.vcxproj" Id="aa74ddf5-46ad-4a78-916d-19a24b468511" />
+  <Project Path="Phase5_Security_Net/31_WinHTTP/31_WinHTTP.vcxproj" Id="ea235767-027d-4360-96b7-fc08b4253be6" />
+  <Project Path="Phase5_Security_Net/32_ETW_Perf/32_ETW_Perf.vcxproj" Id="a36be331-380e-4253-83f1-7de6399b5f62" />
+  <Project Path="Phase5_Security_Net/33_Debugging/33_Debugging.vcxproj" Id="2f50b932-e0f6-412d-b970-4b769c2d7798" />
+  <Project Path="Phase6_Advanced/34_DLL_Injection/34_DLL_Injection.vcxproj" Id="7f62ee45-cb6f-4f76-84bd-214b97ab7ad1" />
+  <Project Path="Phase6_Advanced/35_Hook/35_Hook.vcxproj" Id="79d78eb0-4369-44d9-86f4-c6588f4c354d" />
+  <Project Path="Phase6_Advanced/36_KernelInterface/36_KernelInterface.vcxproj" Id="bb090627-7888-4f90-9f96-e99e46fce69e" />
+  <Project Path="Phase6_Advanced/37_Fiber_UMS/37_Fiber_UMS.vcxproj" Id="29141418-bc88-47f5-8631-e84d6e849477" />
+  <Project Path="Phase6_Advanced/38_JobObject/38_JobObject.vcxproj" Id="ca805c74-df2f-4bca-a4a3-d3db44885255" />
+  <Project Path="Phase6_Advanced/39_Minifilter/39_Minifilter.vcxproj" Id="ac0eb272-2670-40a8-89ca-fe35d402e87e" />
+  <Project Path="Phase7_Capstone/40_ProcessExplorer/40_ProcessExplorer.vcxproj" Id="e4875ddf-d8fd-4da9-8f18-2658fef2f921" />
+</Solution>

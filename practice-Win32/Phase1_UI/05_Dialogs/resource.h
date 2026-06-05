@@ -1,0 +1,7 @@
+#pragma once
+
+#define IDD_INPUT_DIALOG 101
+#define IDC_INPUT_TEXT 1001
+#define IDC_OPEN_DIALOG 1002
+#define IDC_OPEN_FILE 1003
+#define IDC_RESULT 1004

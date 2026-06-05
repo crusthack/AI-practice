@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/1. CSharpBasics/">
+    <Project Path="1. CSharpBasics/Tests/Tests.csproj" />
+    <Project Path="1. CSharpBasics/Benchmarks/CSharpBench.csproj" />
+  </Folder>
+  <Folder Name="/2. HostBuilder/">
+    <Project Path="2. HostBuilder/Tests/Tests.csproj" />
+    <Project Path="2. HostBuilder/Benchmarks/HostBench.csproj" />
+  </Folder>
+  <Folder Name="/3. Logger/">
+    <Project Path="3. Logger/Tests/Tests.csproj" />
+    <Project Path="3. Logger/Benchmarks/LogBench.csproj" />
+  </Folder>
+  <Folder Name="/4. MultiThreading/">
+    <Project Path="4. MultiThreading/Tests/Tests.csproj" />
+    <Project Path="4. MultiThreading/Benchmarks/MTBench.csproj" />
+    <Project Path="4. MultiThreading/FSharpLib/FSharpLib.fsproj" />
+  </Folder>
+  <Project Path="1. CSharpBasics/1. CSharpBasics.csproj" />
+  <Project Path="2. HostBuilder/2. HostBuilder.csproj" />
+  <Project Path="3. Logger/3. Logger.csproj" />
+  <Project Path="4. MultiThreading/4. MultiThreading.csproj" />
+</Solution>

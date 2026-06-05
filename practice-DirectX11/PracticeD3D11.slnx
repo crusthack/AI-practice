@@ -1,0 +1,32 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="01. Dx11Basic/01. Dx11Basic.vcxproj" Id="bda22fd7-74ab-49a6-9847-dd1cec455a07" />
+  <Project Path="02. HelloTriangle/02. HelloTriangle.vcxproj" Id="fe9a1c9d-3728-4775-9e70-db3ccfcbbfaf" />
+  <Project Path="03. Shaders/03. Shaders.vcxproj" Id="e499da58-2007-4fc6-8f78-11738c27bbf3" />
+  <Project Path="04. Index Buffer/04. Index Buffer.vcxproj" Id="4eefb5b5-a21c-4614-be69-f0b98a305ef8" />
+  <Project Path="05. Constant Buffer/05. Constant Buffer.vcxproj" Id="044cb8c0-256b-4e08-9108-04528eb787a8" />
+  <Project Path="06. Render Pipeline/06. Render Pipeline.vcxproj" Id="4f6c4019-d4a9-4a9c-bca7-348ebdb208de" />
+  <Project Path="07. Coordinate Spaces/07. Coordinate Spaces.vcxproj" Id="a82e8906-b6e7-4812-97f4-b7d8ab2f330c" />
+  <Project Path="08. Matrix/08. Matrix.vcxproj" Id="b6555de7-87a3-4fc8-9d58-9d9b5f2cc07f" />
+  <Project Path="09. Camera/09. Camera.vcxproj" Id="8f9d2c9c-7cc1-492e-a8c1-21c7a9bd2b08" />
+  <Project Path="10. 3D Cube/10. 3D Cube.vcxproj" Id="ba82b762-4e9a-4481-a5dc-81af7d63b132" />
+  <Project Path="11. Depth Buffer/11. Depth Buffer.vcxproj" Id="1b96a7da-6a16-4d1c-b01a-b7b7c9dd2130" />
+  <Project Path="12. Texture/12. Texture.vcxproj" Id="d63e9305-361e-47ed-bf92-2f94368827a8" />
+  <Project Path="13. Lighting/13. Lighting.vcxproj" Id="5d550498-53ef-418a-9bff-f4fd9a2ea226" />
+  <Project Path="14. Material/14. Material.vcxproj" Id="cf390b0b-8857-44a8-82e9-08a17b66d9b5" />
+  <Project Path="15. Rasterizer State/15. Rasterizer State.vcxproj" Id="1989860a-fd68-4190-8126-dc3357be57ea" />
+  <Project Path="16. Blend State/16. Blend State.vcxproj" Id="0a2f1c5e-47ec-4b96-a8cb-10528ed5e354" />
+  <Project Path="17. Model Loading/17. Model Loading.vcxproj" Id="3e2b93fe-bf32-41d8-b82d-3875db0dc9f1" />
+  <Project Path="18. Scene/18. Scene.vcxproj" Id="23fb3667-7874-4b15-91a6-28df6930c330" />
+  <Project Path="19. Instancing/19. Instancing.vcxproj" Id="48cf3489-c3e2-43fc-af89-a3c66003dd0a" />
+  <Project Path="20. Render To Texture/20. Render To Texture.vcxproj" Id="691f1d2e-2099-4571-80cf-0339e060e973" />
+  <Project Path="21. Post Processing/21. Post Processing.vcxproj" Id="25e9e2e2-98d2-4b49-a531-599d291a5d12" />
+  <Project Path="22. Shadow Mapping/22. Shadow Mapping.vcxproj" Id="8c71b57f-dbd7-49f8-87fa-ec44b3579f2d" />
+  <Project Path="23. Skybox/23. Skybox.vcxproj" Id="9edc0a78-a2e7-4dbe-9f7d-a98d53082368" />
+  <Project Path="24. Deferred Rendering/24. Deferred Rendering.vcxproj" Id="ec12642a-6732-4d30-9ce7-8c6cc62f10ee" />
+  <Project Path="25. ImGui Integration/25. ImGui Integration.vcxproj" Id="40522a19-b0db-4458-af74-cb984f25d462" />
+  <Project Path="26. Mini Engine/26. Mini Engine.vcxproj" Id="69b8eb2c-c104-4f89-834c-b5a59a99ea48" />
+  <Project Path="27. Final Project/27. Final Project.vcxproj" Id="edaa77fe-2814-42cc-9670-11dccb5fd452" />
+</Solution>

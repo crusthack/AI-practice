@@ -1,0 +1,157 @@
+Severity	Code	Description	Project	File	Line	Suppression State	Details
+Warning	C28251	Inconsistent annotation for 'wWinMain': this instance has no annotations. See c:\program files (x86)\windows kits\10\include\10.0.26100.0\um\winbase.h(1075). 	COM	C:\Users\crust\Documents\practice-Win32\2. COM\main.cpp	4		
+Error	C2440	'=': cannot convert from 'HWND' to 'HWND *'	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	70		
+Error	C2660	'`anonymous-namespace'::SysIconOf': function does not take 3 arguments	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	127		
+Error	C2660	'`anonymous-namespace'::SysIconOf': function does not take 3 arguments	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	128		
+Error	C2660	'`anonymous-namespace'::SysIconOf': function does not take 3 arguments	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	129		
+Error	C2660	'`anonymous-namespace'::SysIconOf': function does not take 3 arguments	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	130		
+Error	C2660	'`anonymous-namespace'::SysIconOf': function does not take 3 arguments	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	131		
+Error	C2660	'`anonymous-namespace'::SysIconOf': function does not take 3 arguments	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	192		
+Error	C2660	'`anonymous-namespace'::SysIconOf': function does not take 3 arguments	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	193		
+Error	C2660	'`anonymous-namespace'::SysIconOf': function does not take 3 arguments	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	194		
+Error	C2059	syntax error: ','	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	228		
+Error	C2065	'b': undeclared identifier	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	228		
+Error	C2143	syntax error: missing ')' before ';'	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	228		
+Error	C2065	'sa': undeclared identifier	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	228		
+Error	C2065	'a': undeclared identifier	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	228		
+Error	C2065	'sb': undeclared identifier	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	228		
+Error	C2447	'{': missing function header (old-style formal list?)	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	228		
+Error	C2059	syntax error: ')'	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	228		
+Error	C2660	'SendMessageW': function does not take 2 arguments	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	228		
+Error	C2143	syntax error: missing ';' before '{'	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	228		
+Error	C2562	'`anonymous-namespace'::SortList': 'void' function returning a value	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	228		
+Error	C2065	'hList': undeclared identifier	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	228		
+Error	C2664	'BOOL ShowWindow(HWND,int)': cannot convert argument 1 from 'HWND *' to 'HWND'	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	352		
+Error	C2660	'`anonymous-namespace'::SysIconOf': function does not take 3 arguments	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	537		
+Error	C2660	'`anonymous-namespace'::SysIconOf': function does not take 3 arguments	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	596		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	616		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	624		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	629		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	632		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	638		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	641		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	645		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	652		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	660		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	663		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	667		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	670		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	674		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	678		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	681		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	685		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	692		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	696		
+Error	C2664	'HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)': cannot convert argument 11 from 'HWND' to 'HINSTANCE'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	699		
+Error	C2440	'=': cannot convert from 'HINSTANCE' to 'HWND'	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	722		
+Error	C2660	'`anonymous-namespace'::SHFileOpDemo': function does not take 4 arguments	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	408		
+Error	C2065	'FOF_NOCONFIRM': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	409		
+Error	C2660	'`anonymous-namespace'::SHFileOpDemo': function does not take 4 arguments	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	415		
+Error	C2065	'FOF_NOCONFIRM': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	416		
+Error	C2660	'`anonymous-namespace'::SHFileOpDemo': function does not take 4 arguments	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	427		
+Error	C2065	'FOF_NOCONFIRM': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	428		
+Error	C2737	'`anonymous-namespace'::kFolders': const object must be initialized	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	448		
+Error	C2065	'FOLDERID_Temp': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	462		
+Error	C2530	'kf': references must be initialized	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	486		
+Error	C3531	'kf': a symbol whose type contains 'auto' must have an initializer	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	486		
+Error	C2143	syntax error: missing ';' before ':'	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	486		
+Error	C3316	'const `anonymous-namespace'::KnownFolderEntry []': an array of unknown size cannot be used in a range-based for statement	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	486		
+Error	C2143	syntax error: missing ';' before ')'	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	486		
+Error	C2660	'PathFindExtensionW': function does not take 3 arguments	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	548		
+Error	C2065	'GPS_READONLY': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	608		
+Error	C2664	'HRESULT IPropertyStore::GetCount(DWORD *)': cannot convert argument 1 from 'UINT *' to 'DWORD *'	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	611		
+Error	C3861	'PropVariantToString': identifier not found	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	621		
+Error	C2065	'OPENFILENAMEW': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	802		
+Error	C2065	'ofn': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	802		
+Error	C2146	syntax error: missing ';' before identifier 'ofn'	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	802		
+Error	C2065	'ofn': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	805		
+Error	C2065	'ofn': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	805		
+Error	C2065	'ofn': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	806		
+Error	C2065	'ofn': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	807		
+Error	C2065	'ofn': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	808		
+Error	C2065	'ofn': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	809		
+Error	C2065	'ofn': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	810		
+Error	C2065	'OFN_FILEMUSTEXIST': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	810		
+Error	C2065	'OFN_PATHMUSTEXIST': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	810		
+Error	C2065	'ofn': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	811		
+Error	C3861	'GetOpenFileNameW': identifier not found	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	812		
+Error	C2065	'ofn': undeclared identifier	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	812		
+Error	LNK2001	unresolved external symbol __imp_InitCommonControlsEx	15_ServiceControl	C:\Users\crust\Documents\practice-Win32\Phase3_System\15_ServiceControl\main.obj	1		
+Error	LNK1120	1 unresolved externals	15_ServiceControl	C:\Users\crust\Documents\practice-Win32\x64\Release\15_ServiceControl.exe	1		
+Error	C3861	'cosf': identifier not found	24_D2D_DWrite	C:\Users\crust\Documents\practice-Win32\Phase4_COM\24_D2D_DWrite\main.cpp	83		
+Error	C3861	'sinf': identifier not found	24_D2D_DWrite	C:\Users\crust\Documents\practice-Win32\Phase4_COM\24_D2D_DWrite\main.cpp	84		
+Error	C3861	'sinf': identifier not found	24_D2D_DWrite	C:\Users\crust\Documents\practice-Win32\Phase4_COM\24_D2D_DWrite\main.cpp	179		
+Error	C2065	'OPENFILENAMEW': undeclared identifier	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	640		
+Error	C2065	'ofn': undeclared identifier	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	640		
+Error	C2146	syntax error: missing ';' before identifier 'ofn'	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	640		
+Error	C3079	an initializer list cannot be used as the right operand of this assignment operator	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	640		
+Error	C2065	'ofn': undeclared identifier	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	643		
+Error	C2065	'ofn': undeclared identifier	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	643		
+Error	C2065	'ofn': undeclared identifier	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	644		
+Error	C2065	'ofn': undeclared identifier	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	645		
+Error	C2065	'ofn': undeclared identifier	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	646		
+Error	C2065	'ofn': undeclared identifier	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	647		
+Error	C2065	'ofn': undeclared identifier	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	648		
+Error	C2065	'OFN_FILEMUSTEXIST': undeclared identifier	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	648		
+Error	C3861	'GetOpenFileNameW': identifier not found	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	649		
+Error	C2065	'ofn': undeclared identifier	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	649		
+Error	C2660	'`anonymous-namespace'::ListAddRow': function does not take 4 arguments	26_Impersonation	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\26_Impersonation\main.cpp	224		
+Error	C2660	'`anonymous-namespace'::ListAddRow': function does not take 4 arguments	26_Impersonation	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\26_Impersonation\main.cpp	254		
+Error	C4996	'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings	28_Winsock2	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\28_Winsock2\main.cpp	662		
+Error	C4996	'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings	28_Winsock2	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\28_Winsock2\main.cpp	669		
+Error	C2065	'WINEVENT_LEVEL_INFO': undeclared identifier	32_ETW_Perf	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\32_ETW_Perf\main.cpp	151		
+Error	C2065	'WINEVENT_OPCODE_INFO': undeclared identifier	32_ETW_Perf	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\32_ETW_Perf\main.cpp	152		
+Error	C4430	missing type specifier - int assumed. Note: C++ does not support default-int	32_ETW_Perf	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\32_ETW_Perf\main.cpp	156		
+Error	C3646	'cpu': unknown override specifier	32_ETW_Perf	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\32_ETW_Perf\main.cpp	156		
+Error	C4430	missing type specifier - int assumed. Note: C++ does not support default-int	32_ETW_Perf	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\32_ETW_Perf\main.cpp	156		
+Error	C3646	'mem': unknown override specifier	32_ETW_Perf	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\32_ETW_Perf\main.cpp	156		
+Error	C4430	missing type specifier - int assumed. Note: C++ does not support default-int	32_ETW_Perf	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\32_ETW_Perf\main.cpp	156		
+Error	C3646	'disk': unknown override specifier	32_ETW_Perf	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\32_ETW_Perf\main.cpp	156		
+Error	C4430	missing type specifier - int assumed. Note: C++ does not support default-int	32_ETW_Perf	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\32_ETW_Perf\main.cpp	156		
+Error	C3646	'net': unknown override specifier	32_ETW_Perf	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\32_ETW_Perf\main.cpp	156		
+Error	C2078	too many initializers	32_ETW_Perf	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\32_ETW_Perf\main.cpp	156		
+Error	C2065	'SB_SETTEXT': undeclared identifier	35_Hook	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\35_Hook\main.cpp	101		
+Error	C2065	'INITCOMMONCONTROLSEX': undeclared identifier	35_Hook	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\35_Hook\main.cpp	138		
+Error	C2065	'icc': undeclared identifier	35_Hook	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\35_Hook\main.cpp	138		
+Error	C2146	syntax error: missing ';' before identifier 'icc'	35_Hook	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\35_Hook\main.cpp	138		
+Error	C2065	'icc': undeclared identifier	35_Hook	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\35_Hook\main.cpp	138		
+Error	C2065	'ICC_BAR_CLASSES': undeclared identifier	35_Hook	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\35_Hook\main.cpp	138		
+Error	C3861	'InitCommonControlsEx': identifier not found	35_Hook	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\35_Hook\main.cpp	139		
+Error	C2065	'icc': undeclared identifier	35_Hook	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\35_Hook\main.cpp	139		
+Error	C2065	'STATUSCLASSNAMEW': undeclared identifier	35_Hook	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\35_Hook\main.cpp	148		
+Error	C2065	'SBARS_SIZEGRIP': undeclared identifier	35_Hook	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\35_Hook\main.cpp	150		
+Error	C2065	'SB_SETTEXT': undeclared identifier	35_Hook	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\35_Hook\main.cpp	181		
+Error	C2065	'SB_SETTEXT': undeclared identifier	36_KernelInterface	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\36_KernelInterface\main.cpp	92		
+Error	C2065	'SB_SETTEXT': undeclared identifier	36_KernelInterface	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\36_KernelInterface\main.cpp	188		
+Error	C2065	'SB_SETTEXT': undeclared identifier	36_KernelInterface	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\36_KernelInterface\main.cpp	250		
+Error	C2065	'INITCOMMONCONTROLSEX': undeclared identifier	36_KernelInterface	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\36_KernelInterface\main.cpp	261		
+Error	C2065	'icc': undeclared identifier	36_KernelInterface	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\36_KernelInterface\main.cpp	261		
+Error	C2146	syntax error: missing ';' before identifier 'icc'	36_KernelInterface	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\36_KernelInterface\main.cpp	261		
+Error	C2065	'icc': undeclared identifier	36_KernelInterface	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\36_KernelInterface\main.cpp	261		
+Error	C2065	'ICC_BAR_CLASSES': undeclared identifier	36_KernelInterface	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\36_KernelInterface\main.cpp	261		
+Error	C3861	'InitCommonControlsEx': identifier not found	36_KernelInterface	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\36_KernelInterface\main.cpp	262		
+Error	C2065	'icc': undeclared identifier	36_KernelInterface	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\36_KernelInterface\main.cpp	262		
+Error	C2065	'STATUSCLASSNAMEW': undeclared identifier	36_KernelInterface	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\36_KernelInterface\main.cpp	279		
+Error	C2065	'SBARS_SIZEGRIP': undeclared identifier	36_KernelInterface	C:\Users\crust\Documents\practice-Win32\Phase6_Advanced\36_KernelInterface\main.cpp	280		
+Warning	C4005	'UNICODE': macro redefinition	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	10		
+Warning	C4005	'_UNICODE': macro redefinition	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	11		
+Warning	C4002	too many arguments for function-like macro invocation 'ListView_SortItemsEx'	07_CommonControls	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\07_CommonControls\main.cpp	235		
+Warning	C4005	'UNICODE': macro redefinition	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	12		
+Warning	C4005	'_UNICODE': macro redefinition	08_OwnerDraw	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\08_OwnerDraw\main.cpp	13		
+Warning	C4005	'UNICODE': macro redefinition	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	16		
+Warning	C4005	'_UNICODE': macro redefinition	09_ShellIntegration	C:\Users\crust\Documents\practice-Win32\Phase2_AdvancedUI\09_ShellIntegration\main.cpp	17		
+Warning	C4005	'UNICODE': macro redefinition	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	9		
+Warning	C4005	'_UNICODE': macro redefinition	25_Security	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\25_Security\main.cpp	10		
+Warning	C4005	'UNICODE': macro redefinition	26_Impersonation	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\26_Impersonation\main.cpp	8		
+Warning	C4005	'_UNICODE': macro redefinition	26_Impersonation	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\26_Impersonation\main.cpp	9		
+Warning	C4005	'_UNICODE': macro redefinition	27_Cryptography	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\27_Cryptography\main.cpp	10		
+Warning	C4005	'_UNICODE': macro redefinition	28_Winsock2	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\28_Winsock2\main.cpp	10		
+Warning	C4005	'UNICODE': macro redefinition	29_NamedPipe_MM	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\29_NamedPipe_MM\main.cpp	6		
+Warning	C4005	'_UNICODE': macro redefinition	29_NamedPipe_MM	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\29_NamedPipe_MM\main.cpp	7		
+Warning	C4005	'_UNICODE': macro redefinition	30_Mailslot_LPC	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\30_Mailslot_LPC\main.cpp	7		
+Warning	C4005	'UNICODE': macro redefinition	31_WinHTTP	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\31_WinHTTP\main.cpp	8		
+Warning	C4005	'_UNICODE': macro redefinition	31_WinHTTP	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\31_WinHTTP\main.cpp	9		
+Warning	C4005	'UNICODE': macro redefinition	32_ETW_Perf	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\32_ETW_Perf\main.cpp	8		
+Warning	C4005	'_UNICODE': macro redefinition	32_ETW_Perf	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\32_ETW_Perf\main.cpp	9		
+Warning	C4005	'UNICODE': macro redefinition	33_Debugging	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\33_Debugging\main.cpp	9		
+Warning	C4005	'_UNICODE': macro redefinition	33_Debugging	C:\Users\crust\Documents\practice-Win32\Phase5_Security_Net\33_Debugging\main.cpp	10		
