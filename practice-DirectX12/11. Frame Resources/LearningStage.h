@@ -27,7 +27,9 @@ struct Vertex
 
 struct FrameConstants
 {
-    float Offset[4];
+    float Angle;
+    float Scale;
+    float Offset[2];
     float Tint[4];
 };
 
@@ -202,38 +204,44 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
         StageThrowIfFailed(stage.Frames[frameIndex].ConstantBuffer->Map(0, &readRange, reinterpret_cast<void**>(&stage.Frames[frameIndex].MappedConstants)), "Per-frame constant buffer Map failed.");
     }
 
-    const Vertex vertices[] = {
-        { { 0.0f, 0.55f, 0.0f }, { 1.0f, 0.95f, 0.25f, 1.0f } },
-        { { 0.55f, -0.45f, 0.0f }, { 0.25f, 0.80f, 1.0f, 1.0f } },
-        { { -0.55f, -0.45f, 0.0f }, { 1.0f, 0.35f, 0.35f, 1.0f } },
+    // 18-vertex hexagonal color wheel: 6 fan triangles sharing a white center.
+    static const float kOuter[6][2] = {
+        {  0.000f,  0.580f }, {  0.502f,  0.290f },
+        {  0.502f, -0.290f }, {  0.000f, -0.580f },
+        { -0.502f, -0.290f }, { -0.502f,  0.290f },
     };
+    static const float kColors[6][4] = {
+        { 1.0f, 0.15f, 0.15f, 1.0f }, { 1.0f, 0.85f, 0.15f, 1.0f },
+        { 0.15f, 0.90f, 0.15f, 1.0f }, { 0.15f, 0.90f, 0.90f, 1.0f },
+        { 0.30f, 0.35f, 1.00f, 1.0f }, { 0.90f, 0.20f, 0.90f, 1.0f },
+    };
+    Vertex vertices[18] = {};
+    for (int seg = 0; seg < 6; ++seg)
+    {
+        const int next = (seg + 1) % 6;
+        vertices[seg * 3 + 0] = { { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f, 1.0f } };
+        vertices[seg * 3 + 1] = { { kOuter[seg][0],  kOuter[seg][1],  0.0f }, { kColors[seg][0],  kColors[seg][1],  kColors[seg][2],  1.0f } };
+        vertices[seg * 3 + 2] = { { kOuter[next][0], kOuter[next][1], 0.0f }, { kColors[next][0], kColors[next][1], kColors[next][2], 1.0f } };
+    }
     CreateUploadBuffer(device, vertices, sizeof(vertices), &stage.VertexBuffer);
     stage.VertexBufferView = { stage.VertexBuffer->GetGPUVirtualAddress(), sizeof(vertices), sizeof(Vertex) };
 }
 
 inline void UpdateStageSpecificDemo(LearningStageState& stage, double timeSeconds)
 {
-    stage.ClearColor[0] = 0.10f;
-    stage.ClearColor[1] = 0.10f;
-    stage.ClearColor[2] = 0.12f;
-    stage.ClearColor[3] = 1.0f;
     stage.TimeSeconds = timeSeconds;
 }
 
 inline void ApplyStageSpecificRender(LearningStageState& stage, const LearningStageRenderContext& context)
 {
     FrameResource& frame = stage.Frames[context.FrameIndex % StageFrameCount];
-    const float slotDirection = (context.FrameIndex % 2) == 0 ? -1.0f : 1.0f;
-    const float motion = static_cast<float>(std::sin(stage.TimeSeconds * 1.5) * 0.25);
+    const float t = static_cast<float>(stage.TimeSeconds);
     FrameConstants constants = {};
-    constants.Offset[0] = slotDirection * 0.12f + motion;
-    constants.Offset[1] = 0.0f;
-    constants.Offset[2] = 0.0f;
-    constants.Offset[3] = 0.0f;
-    constants.Tint[0] = (context.FrameIndex % 2) == 0 ? 1.0f : 0.65f;
-    constants.Tint[1] = (context.FrameIndex % 2) == 0 ? 0.75f : 1.0f;
-    constants.Tint[2] = 1.0f;
-    constants.Tint[3] = 1.0f;
+    constants.Angle    = t * 1.8f;
+    constants.Scale    = 1.0f;
+    constants.Offset[0] = std::sinf(t * 0.80f) * 0.22f;
+    constants.Offset[1] = std::sinf(t * 1.60f + 0.5f) * 0.12f;
+    constants.Tint[0] = constants.Tint[1] = constants.Tint[2] = constants.Tint[3] = 1.0f;
     std::memcpy(frame.MappedConstants, &constants, sizeof(constants));
     frame.UpdateSerial = ++stage.FrameSerial;
 
@@ -251,7 +259,7 @@ inline void ApplyStageSpecificRender(LearningStageState& stage, const LearningSt
     context.CommandList->RSSetScissorRects(1, &scissorRect);
     context.CommandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     context.CommandList->IASetVertexBuffers(0, 1, &stage.VertexBufferView);
-    context.CommandList->DrawInstanced(3, 1, 0, 0);
+    context.CommandList->DrawInstanced(18, 1, 0, 0);
 }
 
 inline void ApplyStageSpecificCleanup(LearningStageState& stage)

@@ -148,13 +148,29 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
     psoDesc.SampleDesc.Count = 1;
     StageThrowIfFailed(device->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&stage.PipelineState)), "CreateGraphicsPipelineState failed.");
 
+    // 12-sided polygon: vertex 0 is the white centre; vertices 1–12 are the outer ring.
+    // 12 triangles (36 indices) fan from the centre, each slice a different rainbow hue.
+    // Outer vertices lie on a circle of radius 0.56 at 30-degree intervals, starting at 90 degrees.
     const Vertex vertices[] = {
-        { { -0.55f, 0.45f, 0.0f }, { 1.0f, 0.25f, 0.20f, 1.0f } },
-        { { 0.55f, 0.45f, 0.0f }, { 0.25f, 0.85f, 0.35f, 1.0f } },
-        { { 0.55f, -0.45f, 0.0f }, { 0.25f, 0.45f, 1.0f, 1.0f } },
-        { { -0.55f, -0.45f, 0.0f }, { 1.0f, 0.85f, 0.25f, 1.0f } },
+        { {  0.000f,  0.000f, 0.0f }, { 1.00f, 1.00f, 1.00f, 1.0f } }, // 0  centre
+        { {  0.000f,  0.560f, 0.0f }, { 1.00f, 0.15f, 0.15f, 1.0f } }, // 1  red
+        { {  0.280f,  0.485f, 0.0f }, { 1.00f, 0.55f, 0.15f, 1.0f } }, // 2  orange
+        { {  0.485f,  0.280f, 0.0f }, { 1.00f, 0.90f, 0.15f, 1.0f } }, // 3  yellow
+        { {  0.560f,  0.000f, 0.0f }, { 0.55f, 0.95f, 0.15f, 1.0f } }, // 4  lime
+        { {  0.485f, -0.280f, 0.0f }, { 0.15f, 0.90f, 0.20f, 1.0f } }, // 5  green
+        { {  0.280f, -0.485f, 0.0f }, { 0.15f, 0.90f, 0.55f, 1.0f } }, // 6  spring
+        { {  0.000f, -0.560f, 0.0f }, { 0.15f, 0.85f, 0.90f, 1.0f } }, // 7  cyan
+        { { -0.280f, -0.485f, 0.0f }, { 0.15f, 0.50f, 1.00f, 1.0f } }, // 8  azure
+        { { -0.485f, -0.280f, 0.0f }, { 0.20f, 0.20f, 1.00f, 1.0f } }, // 9  blue
+        { { -0.560f,  0.000f, 0.0f }, { 0.60f, 0.15f, 1.00f, 1.0f } }, // 10 violet
+        { { -0.485f,  0.280f, 0.0f }, { 0.90f, 0.15f, 0.90f, 1.0f } }, // 11 magenta
+        { { -0.280f,  0.485f, 0.0f }, { 1.00f, 0.15f, 0.55f, 1.0f } }, // 12 rose
     };
-    const uint16_t indices[] = { 0, 1, 2, 0, 2, 3 };
+    const uint16_t indices[] = {
+        0,  1,  2,   0,  2,  3,   0,  3,  4,   0,  4,  5,
+        0,  5,  6,   0,  6,  7,   0,  7,  8,   0,  8,  9,
+        0,  9, 10,   0, 10, 11,   0, 11, 12,   0, 12,  1,
+    };
 
     CreateUploadBuffer(device, vertices, sizeof(vertices), &stage.VertexBuffer);
     CreateUploadBuffer(device, indices, sizeof(indices), &stage.IndexBuffer);
@@ -190,7 +206,7 @@ inline void ApplyStageSpecificRender(LearningStageState& stage, const LearningSt
     context.CommandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     context.CommandList->IASetVertexBuffers(0, 1, &stage.VertexBufferView);
     context.CommandList->IASetIndexBuffer(&stage.IndexBufferView);
-    context.CommandList->DrawIndexedInstanced(6, 1, 0, 0, 0);
+    context.CommandList->DrawIndexedInstanced(36, 1, 0, 0, 0);
 }
 
 inline void ApplyStageSpecificCleanup(LearningStageState& stage)

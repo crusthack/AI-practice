@@ -308,6 +308,9 @@ int Run(HINSTANCE instance, int showCommand)
     ApplyStageSpecificSetup(stage, dx.Device.Get());
 
     auto startTime = std::chrono::steady_clock::now();
+    double prevTime = 0.0;
+    uint32_t fpsFrameCount = 0;
+    double fpsAccum = 0.0;
 
     MSG msg = {};
     while (msg.message != WM_QUIT)
@@ -321,6 +324,21 @@ int Run(HINSTANCE instance, int showCommand)
 
         const auto now = std::chrono::steady_clock::now();
         const double timeSeconds = std::chrono::duration<double>(now - startTime).count();
+        const double deltaTime = timeSeconds - prevTime;
+        prevTime = timeSeconds;
+
+        fpsAccum += deltaTime;
+        ++fpsFrameCount;
+        if (fpsAccum >= 1.0)
+        {
+            const int fps = static_cast<int>(fpsFrameCount / fpsAccum + 0.5);
+            const int ms  = static_cast<int>(1000.0 * fpsAccum / fpsFrameCount + 0.5);
+            wchar_t title[64];
+            wsprintf(title, L"01. Dx12 Basic  |  %d fps  |  %d ms/frame", fps, ms);
+            SetWindowTextW(g_hwnd, title);
+            fpsFrameCount = 0;
+            fpsAccum = 0.0;
+        }
 
         UpdateStageSpecificDemo(stage, timeSeconds);
         Render(dx, stage);

@@ -3,6 +3,7 @@
 // Learning goal: Create a Win32 window, initialize the DX12 device/swap chain/command queue, clear a back buffer, and present.
 // Implementation status: Implemented.
 
+#include <cmath>
 #include <d3d12.h>
 
 struct LearningStageState
@@ -25,10 +26,10 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
 
 inline void UpdateStageSpecificDemo(LearningStageState& stage, double timeSeconds)
 {
-    (void)timeSeconds;
-    stage.ClearColor[0] = 0.08f;
-    stage.ClearColor[1] = 0.13f;
-    stage.ClearColor[2] = 0.20f;
+    const float t = static_cast<float>(timeSeconds);
+    stage.ClearColor[0] = 0.05f + 0.05f * std::sinf(t * 0.7f);
+    stage.ClearColor[1] = 0.10f + 0.06f * std::sinf(t * 0.5f + 1.0f);
+    stage.ClearColor[2] = 0.20f + 0.10f * std::sinf(t * 0.9f + 2.0f);
     stage.ClearColor[3] = 1.0f;
 }
 

@@ -307,7 +307,11 @@ int Run(HINSTANCE instance, int showCommand)
 
     InitGraphicsDevice(dx);
     CreateCommonResources(dx);
-    ApplyStageSpecificSetup(stage, dx.Device.Get());
+    LearningStageSetupContext setupContext = {};
+    setupContext.Device = dx.Device.Get();
+    setupContext.Width = WindowWidth;
+    setupContext.Height = WindowHeight;
+    ApplyStageSpecificSetup(stage, setupContext);
 
     auto startTime = std::chrono::steady_clock::now();
 

@@ -57,6 +57,8 @@ struct LearningStageState
     D3D12_VERTEX_BUFFER_VIEW VertexBufferView = {};
     D3D12_INDEX_BUFFER_VIEW IndexBufferView = {};
     uint32_t IndexCount = 0;
+    uint32_t ViewWidth = 1280;
+    uint32_t ViewHeight = 720;
 };
 
 struct LearningStageRenderContext
@@ -145,8 +147,11 @@ inline void AddCube(std::vector<Vertex>& vertices, std::vector<uint16_t>& indice
     }
 }
 
-inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* device)
+inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* device, uint32_t width, uint32_t height)
 {
+    stage.ViewWidth  = width;
+    stage.ViewHeight = height;
+
     D3D12_DESCRIPTOR_RANGE cbvRange = {};
     cbvRange.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_CBV;
     cbvRange.NumDescriptors = 1;
@@ -228,8 +233,8 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
     defaultHeap.Type = D3D12_HEAP_TYPE_DEFAULT;
     D3D12_RESOURCE_DESC depthDesc = {};
     depthDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
-    depthDesc.Width = 1280;
-    depthDesc.Height = 720;
+    depthDesc.Width = static_cast<UINT64>(width);
+    depthDesc.Height = static_cast<UINT>(height);
     depthDesc.DepthOrArraySize = 1;
     depthDesc.MipLevels = 1;
     depthDesc.Format = DXGI_FORMAT_D32_FLOAT;
@@ -264,9 +269,13 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
 
     std::vector<Vertex> vertices;
     std::vector<uint16_t> indices;
-    AddCube(vertices, indices, { -1.8f, 0.0f, 0.0f }, 1.0f, { 0.95f, 0.25f, 0.20f, 1.0f });
-    AddCube(vertices, indices, { 0.0f, 0.0f, 1.5f }, 1.0f, { 0.25f, 0.85f, 0.35f, 1.0f });
-    AddCube(vertices, indices, { 1.8f, 0.0f, 3.0f }, 1.0f, { 0.25f, 0.45f, 1.0f, 1.0f });
+    AddCube(vertices, indices, {  0.0f,  0.0f,  0.0f }, 1.0f, { 0.95f, 0.25f, 0.20f, 1.0f });
+    AddCube(vertices, indices, { -2.5f,  0.0f,  1.0f }, 0.8f, { 0.25f, 0.85f, 0.35f, 1.0f });
+    AddCube(vertices, indices, {  2.5f,  0.0f,  1.0f }, 0.8f, { 0.25f, 0.45f, 1.0f, 1.0f });
+    AddCube(vertices, indices, {  0.0f,  0.0f,  4.0f }, 1.2f, { 0.90f, 0.75f, 0.20f, 1.0f });
+    AddCube(vertices, indices, { -2.0f,  0.0f,  5.5f }, 0.7f, { 0.80f, 0.30f, 0.90f, 1.0f });
+    AddCube(vertices, indices, {  2.0f,  0.0f,  5.5f }, 0.7f, { 0.20f, 0.80f, 0.80f, 1.0f });
+    AddCube(vertices, indices, {  0.0f, -1.0f,  2.5f }, 0.5f, { 0.90f, 0.60f, 0.30f, 1.0f });
     CreateUploadBuffer(device, vertices.data(), static_cast<UINT64>(vertices.size() * sizeof(Vertex)), &stage.VertexBuffer);
     CreateUploadBuffer(device, indices.data(), static_cast<UINT64>(indices.size() * sizeof(uint16_t)), &stage.IndexBuffer);
     stage.VertexBufferView = { stage.VertexBuffer->GetGPUVirtualAddress(), static_cast<UINT>(vertices.size() * sizeof(Vertex)), sizeof(Vertex) };
@@ -331,7 +340,8 @@ inline void UpdateStageSpecificDemo(LearningStageState& stage, double timeSecond
 
     const XMMATRIX world = XMMatrixIdentity();
     const XMMATRIX view = XMMatrixLookToLH(XMLoadFloat3(&stage.CameraPosition), CameraForward(stage), up);
-    const XMMATRIX projection = XMMatrixPerspectiveFovLH(XM_PIDIV4, 1280.0f / 720.0f, 0.1f, 100.0f);
+    const float aspect = static_cast<float>(stage.ViewWidth) / static_cast<float>(stage.ViewHeight);
+    const XMMATRIX projection = XMMatrixPerspectiveFovLH(XM_PIDIV4, aspect, 0.1f, 100.0f);
     XMStoreFloat4x4(&stage.Constants.WorldViewProjection, XMMatrixTranspose(world * view * projection));
     std::memcpy(stage.MappedConstants, &stage.Constants, sizeof(CameraConstants));
 }

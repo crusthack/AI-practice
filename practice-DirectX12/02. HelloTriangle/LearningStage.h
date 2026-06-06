@@ -3,6 +3,7 @@
 // Learning goal: Build the first root signature and graphics pipeline state object, then draw a triangle.
 // Implementation status: Implemented.
 
+#include <cmath>
 #include <cstdint>
 #include <cstring>
 #include <climits>
@@ -56,6 +57,7 @@ struct LearningStageState
     ComPtr<ID3D12PipelineState> PipelineState;
     ComPtr<ID3D12Resource> VertexBuffer;
     D3D12_VERTEX_BUFFER_VIEW VertexBufferView = {};
+    Vertex* MappedVertices = nullptr;
 };
 
 struct LearningStageRenderContext
@@ -165,10 +167,11 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
 
     StageThrowIfFailed(device->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&stage.PipelineState)), "CreateGraphicsPipelineState failed.");
 
+    // Equilateral triangle — vertices lie on a circle of radius 0.55.
     const Vertex vertices[] = {
-        { { 0.0f, 0.55f, 0.0f }, { 1.0f, 0.18f, 0.18f, 1.0f } },
-        { { 0.55f, -0.45f, 0.0f }, { 0.18f, 0.85f, 0.32f, 1.0f } },
-        { { -0.55f, -0.45f, 0.0f }, { 0.22f, 0.45f, 1.0f, 1.0f } },
+        { {  0.000f,  0.550f, 0.0f }, { 1.0f, 0.18f, 0.18f, 1.0f } },
+        { {  0.476f, -0.275f, 0.0f }, { 0.18f, 0.85f, 0.32f, 1.0f } },
+        { { -0.476f, -0.275f, 0.0f }, { 0.22f, 0.45f, 1.0f,  1.0f } },
     };
 
     const UINT vertexBufferSize = sizeof(vertices);
@@ -196,11 +199,10 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
             IID_PPV_ARGS(&stage.VertexBuffer)),
         "CreateCommittedResource for vertex buffer failed.");
 
-    void* mappedData = nullptr;
     D3D12_RANGE readRange = { 0, 0 };
-    StageThrowIfFailed(stage.VertexBuffer->Map(0, &readRange, &mappedData), "Vertex buffer Map failed.");
-    std::memcpy(mappedData, vertices, vertexBufferSize);
-    stage.VertexBuffer->Unmap(0, nullptr);
+    StageThrowIfFailed(stage.VertexBuffer->Map(0, &readRange, reinterpret_cast<void**>(&stage.MappedVertices)), "Vertex buffer Map failed.");
+    std::memcpy(stage.MappedVertices, vertices, vertexBufferSize);
+    // Buffer stays mapped; UpdateStageSpecificDemo writes rotated positions each frame.
 
     stage.VertexBufferView.BufferLocation = stage.VertexBuffer->GetGPUVirtualAddress();
     stage.VertexBufferView.StrideInBytes = sizeof(Vertex);
@@ -209,11 +211,22 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
 
 inline void UpdateStageSpecificDemo(LearningStageState& stage, double timeSeconds)
 {
-    (void)timeSeconds;
     stage.ClearColor[0] = 0.05f;
     stage.ClearColor[1] = 0.10f;
     stage.ClearColor[2] = 0.22f;
     stage.ClearColor[3] = 1.0f;
+
+    // Rotate the three base positions around the origin and write directly to the mapped buffer.
+    // Color channels are left untouched; only xy position is updated each frame.
+    const float angle = static_cast<float>(timeSeconds) * 1.2f;
+    const float c = std::cosf(angle);
+    const float s = std::sinf(angle);
+    static const float kBase[3][2] = { { 0.000f, 0.550f }, { 0.476f, -0.275f }, { -0.476f, -0.275f } };
+    for (int i = 0; i < 3; ++i)
+    {
+        stage.MappedVertices[i].Position[0] = c * kBase[i][0] - s * kBase[i][1];
+        stage.MappedVertices[i].Position[1] = s * kBase[i][0] + c * kBase[i][1];
+    }
 }
 
 inline void ApplyStageSpecificRender(LearningStageState& stage, const LearningStageRenderContext& context)
@@ -245,5 +258,12 @@ inline void ApplyStageSpecificRender(LearningStageState& stage, const LearningSt
 
 inline void ApplyStageSpecificCleanup(LearningStageState& stage)
 {
-    (void)stage;
+    if (stage.MappedVertices)
+    {
+        stage.VertexBuffer->Unmap(0, nullptr);
+        stage.MappedVertices = nullptr;
+    }
+    stage.VertexBuffer.Reset();
+    stage.PipelineState.Reset();
+    stage.RootSignature.Reset();
 }

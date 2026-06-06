@@ -25,6 +25,7 @@ struct Vertex
 struct LearningStageState
 {
     float ClearColor[4] = { 0.03f, 0.05f, 0.09f, 1.0f };
+    float TimeSeconds = 0.0f;
     ComPtr<ID3D12RootSignature> RootSignature;
     ComPtr<ID3D12PipelineState> PipelineState;
     ComPtr<ID3D12Resource> VertexBuffer;
@@ -62,9 +63,18 @@ inline std::wstring StageShaderPath()
     return slash == std::wstring::npos ? L"08. Depth Buffer\\shaders\\Depth Buffer.hlsl" : path.substr(0, slash + 1) + L"shaders\\Depth Buffer.hlsl";
 }
 
-inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* device)
+inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* device, uint32_t width, uint32_t height)
 {
+    D3D12_ROOT_PARAMETER rootParameter = {};
+    rootParameter.ParameterType = D3D12_ROOT_PARAMETER_TYPE_32BIT_CONSTANTS;
+    rootParameter.Constants.ShaderRegister = 0;
+    rootParameter.Constants.RegisterSpace = 0;
+    rootParameter.Constants.Num32BitValues = 1;
+    rootParameter.ShaderVisibility = D3D12_SHADER_VISIBILITY_VERTEX;
+
     D3D12_ROOT_SIGNATURE_DESC rootSignatureDesc = {};
+    rootSignatureDesc.NumParameters = 1;
+    rootSignatureDesc.pParameters = &rootParameter;
     rootSignatureDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
     ComPtr<ID3DBlob> signatureBlob;
     ComPtr<ID3DBlob> errorBlob;
@@ -156,8 +166,8 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
     defaultHeap.Type = D3D12_HEAP_TYPE_DEFAULT;
     D3D12_RESOURCE_DESC depthResourceDesc = {};
     depthResourceDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
-    depthResourceDesc.Width = 1280;
-    depthResourceDesc.Height = 720;
+    depthResourceDesc.Width = static_cast<UINT64>(width);
+    depthResourceDesc.Height = static_cast<UINT>(height);
     depthResourceDesc.DepthOrArraySize = 1;
     depthResourceDesc.MipLevels = 1;
     depthResourceDesc.Format = DXGI_FORMAT_D32_FLOAT;
@@ -172,11 +182,7 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
 
 inline void UpdateStageSpecificDemo(LearningStageState& stage, double timeSeconds)
 {
-    (void)timeSeconds;
-    stage.ClearColor[0] = 0.03f;
-    stage.ClearColor[1] = 0.05f;
-    stage.ClearColor[2] = 0.09f;
-    stage.ClearColor[3] = 1.0f;
+    stage.TimeSeconds = static_cast<float>(timeSeconds);
 }
 
 inline void ApplyStageSpecificRender(LearningStageState& stage, const LearningStageRenderContext& context)
@@ -187,6 +193,7 @@ inline void ApplyStageSpecificRender(LearningStageState& stage, const LearningSt
     context.CommandList->OMSetRenderTargets(1, &context.RenderTargetView, FALSE, &dsv);
     context.CommandList->SetGraphicsRootSignature(stage.RootSignature.Get());
     context.CommandList->SetPipelineState(stage.PipelineState.Get());
+    context.CommandList->SetGraphicsRoot32BitConstants(0, 1, &stage.TimeSeconds, 0);
     D3D12_VIEWPORT viewport = { 0.0f, 0.0f, static_cast<float>(context.Width), static_cast<float>(context.Height), 0.0f, 1.0f };
     D3D12_RECT scissorRect = { 0, 0, static_cast<LONG>(context.Width), static_cast<LONG>(context.Height) };
     context.CommandList->RSSetViewports(1, &viewport);

@@ -25,9 +25,10 @@ struct Vertex
 
 struct SceneConstants
 {
-    float Offset[2];
-    float Padding[2];
-    float Tint[4];
+    float Offset[2]; // Lissajous position offset written each frame
+    float CosA;      // precomputed cos(scene rotation angle)
+    float SinA;      // precomputed sin(scene rotation angle)
+    float Tint[4];   // global colour multiplier
 };
 
 struct LearningStageState
@@ -173,11 +174,43 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
     D3D12_RANGE readRange = { 0, 0 };
     StageThrowIfFailed(stage.ConstantBuffer->Map(0, &readRange, reinterpret_cast<void**>(&stage.MappedConstants)), "Constant buffer Map failed.");
 
-    const Vertex vertices[] = {
-        { { 0.0f, 0.52f, 0.0f }, { 1.0f, 0.30f, 0.25f, 1.0f } },
-        { { 0.56f, -0.42f, 0.0f }, { 0.25f, 0.95f, 0.40f, 1.0f } },
-        { { -0.56f, -0.42f, 0.0f }, { 0.25f, 0.50f, 1.0f, 1.0f } },
+    // 7 equilateral triangles: 1 large central (grey) + 6 small satellites (rainbow).
+    // All share the single CBV → the same rotation and offset apply to every triangle.
+    constexpr float kTau   = 6.28318f;
+    constexpr float kBigR  = 0.28f;  // central triangle circumradius
+    constexpr float kSmR   = 0.14f;  // satellite circumradius
+    constexpr float kOrbit = 0.52f;  // satellite orbit radius
+    static const float kColors[6][3] = {
+        { 1.0f, 0.20f, 0.20f }, { 1.0f, 0.85f, 0.20f },
+        { 0.25f, 0.90f, 0.25f }, { 0.20f, 0.85f, 0.95f },
+        { 0.35f, 0.40f, 1.00f }, { 0.90f, 0.25f, 0.90f },
     };
+    Vertex vertices[21] = {};
+    for (int i = 0; i < 3; ++i)
+    {
+        const float a = kTau / 4.0f + i * (kTau / 3.0f);
+        vertices[i].Position[0] = kBigR * std::cosf(a);
+        vertices[i].Position[1] = kBigR * std::sinf(a);
+        vertices[i].Color[0] = vertices[i].Color[1] = vertices[i].Color[2] = 0.88f;
+        vertices[i].Color[3] = 1.0f;
+    }
+    for (int s = 0; s < 6; ++s)
+    {
+        const float orbitAngle = s * (kTau / 6.0f);
+        const float cx = kOrbit * std::cosf(orbitAngle);
+        const float cy = kOrbit * std::sinf(orbitAngle);
+        for (int i = 0; i < 3; ++i)
+        {
+            const float a = orbitAngle + i * (kTau / 3.0f);
+            Vertex& v = vertices[3 + s * 3 + i];
+            v.Position[0] = cx + kSmR * std::cosf(a);
+            v.Position[1] = cy + kSmR * std::sinf(a);
+            v.Color[0] = kColors[s][0];
+            v.Color[1] = kColors[s][1];
+            v.Color[2] = kColors[s][2];
+            v.Color[3] = 1.0f;
+        }
+    }
 
     D3D12_RESOURCE_DESC vbDesc = constantDesc;
     vbDesc.Width = sizeof(vertices);
@@ -198,14 +231,13 @@ inline void UpdateStageSpecificDemo(LearningStageState& stage, double timeSecond
     stage.ClearColor[1] = 0.14f;
     stage.ClearColor[2] = 0.17f;
     stage.ClearColor[3] = 1.0f;
-    stage.Constants.Offset[0] = std::sinf(static_cast<float>(timeSeconds)) * 0.12f;
-    stage.Constants.Offset[1] = 0.0f;
-    stage.Constants.Padding[0] = 0.0f;
-    stage.Constants.Padding[1] = 0.0f;
-    stage.Constants.Tint[0] = 0.8f;
-    stage.Constants.Tint[1] = 0.9f + 0.1f * std::sinf(static_cast<float>(timeSeconds) * 2.0f);
-    stage.Constants.Tint[2] = 1.0f;
-    stage.Constants.Tint[3] = 1.0f;
+    const float t = static_cast<float>(timeSeconds);
+    const float angle = t * 0.50f;
+    stage.Constants.Offset[0] = std::sinf(t * 0.80f) * 0.22f;        // Lissajous x
+    stage.Constants.Offset[1] = std::sinf(t * 1.60f + 0.5f) * 0.12f; // Lissajous y (2× frequency)
+    stage.Constants.CosA = std::cosf(angle);
+    stage.Constants.SinA = std::sinf(angle);
+    stage.Constants.Tint[0] = stage.Constants.Tint[1] = stage.Constants.Tint[2] = stage.Constants.Tint[3] = 1.0f;
     std::memcpy(stage.MappedConstants, &stage.Constants, sizeof(SceneConstants));
 }
 
@@ -224,7 +256,7 @@ inline void ApplyStageSpecificRender(LearningStageState& stage, const LearningSt
     context.CommandList->RSSetScissorRects(1, &scissorRect);
     context.CommandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     context.CommandList->IASetVertexBuffers(0, 1, &stage.VertexBufferView);
-    context.CommandList->DrawInstanced(3, 1, 0, 0);
+    context.CommandList->DrawInstanced(21, 1, 0, 0);
 }
 
 inline void ApplyStageSpecificCleanup(LearningStageState& stage)

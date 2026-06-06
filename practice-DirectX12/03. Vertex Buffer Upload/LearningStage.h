@@ -135,10 +135,35 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
 
     StageThrowIfFailed(device->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&stage.PipelineState)), "CreateGraphicsPipelineState failed.");
 
+    // Hexagonal colour wheel: 6 triangles fanning from the origin.
+    // Each triangle shares two adjacent outer vertices (p[i], p[i+1]) and one white centre.
+    // Outer vertices sit on a circle of radius 0.58 at 60-degree intervals (flat-top hex, p0 at 90 degrees).
+    // p0=(0, 0.58)  p1=(0.502, 0.29)  p2=(0.502,-0.29)  p3=(0,-0.58)  p4=(-0.502,-0.29)  p5=(-0.502, 0.29)
     const Vertex vertices[] = {
-        { { 0.0f, 0.56f, 0.0f }, { 1.0f, 0.24f, 0.18f, 1.0f } },
-        { { 0.58f, -0.48f, 0.0f }, { 0.20f, 0.90f, 0.35f, 1.0f } },
-        { { -0.58f, -0.48f, 0.0f }, { 0.30f, 0.50f, 1.0f, 1.0f } },
+        // Triangle 0: centre–p0–p1 (red → yellow)
+        { {  0.000f,  0.000f, 0.0f }, { 1.0f, 1.0f, 1.0f, 1.0f } },
+        { {  0.000f,  0.580f, 0.0f }, { 1.0f, 0.15f, 0.15f, 1.0f } },
+        { {  0.502f,  0.290f, 0.0f }, { 1.0f, 0.90f, 0.15f, 1.0f } },
+        // Triangle 1: centre–p1–p2 (yellow → green)
+        { {  0.000f,  0.000f, 0.0f }, { 1.0f, 1.0f, 1.0f, 1.0f } },
+        { {  0.502f,  0.290f, 0.0f }, { 1.0f, 0.90f, 0.15f, 1.0f } },
+        { {  0.502f, -0.290f, 0.0f }, { 0.20f, 0.90f, 0.20f, 1.0f } },
+        // Triangle 2: centre–p2–p3 (green → cyan)
+        { {  0.000f,  0.000f, 0.0f }, { 1.0f, 1.0f, 1.0f, 1.0f } },
+        { {  0.502f, -0.290f, 0.0f }, { 0.20f, 0.90f, 0.20f, 1.0f } },
+        { {  0.000f, -0.580f, 0.0f }, { 0.15f, 0.85f, 0.90f, 1.0f } },
+        // Triangle 3: centre–p3–p4 (cyan → blue)
+        { {  0.000f,  0.000f, 0.0f }, { 1.0f, 1.0f, 1.0f, 1.0f } },
+        { {  0.000f, -0.580f, 0.0f }, { 0.15f, 0.85f, 0.90f, 1.0f } },
+        { { -0.502f, -0.290f, 0.0f }, { 0.20f, 0.30f, 1.00f, 1.0f } },
+        // Triangle 4: centre–p4–p5 (blue → magenta)
+        { {  0.000f,  0.000f, 0.0f }, { 1.0f, 1.0f, 1.0f, 1.0f } },
+        { { -0.502f, -0.290f, 0.0f }, { 0.20f, 0.30f, 1.00f, 1.0f } },
+        { { -0.502f,  0.290f, 0.0f }, { 0.85f, 0.20f, 0.90f, 1.0f } },
+        // Triangle 5: centre–p5–p0 (magenta → red, wraps)
+        { {  0.000f,  0.000f, 0.0f }, { 1.0f, 1.0f, 1.0f, 1.0f } },
+        { { -0.502f,  0.290f, 0.0f }, { 0.85f, 0.20f, 0.90f, 1.0f } },
+        { {  0.000f,  0.580f, 0.0f }, { 1.0f, 0.15f, 0.15f, 1.0f } },
     };
     const UINT vertexBufferSize = sizeof(vertices);
 
@@ -225,7 +250,7 @@ inline void ApplyStageSpecificRender(LearningStageState& stage, const LearningSt
     context.CommandList->RSSetScissorRects(1, &scissorRect);
     context.CommandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     context.CommandList->IASetVertexBuffers(0, 1, &stage.VertexBufferView);
-    context.CommandList->DrawInstanced(3, 1, 0, 0);
+    context.CommandList->DrawInstanced(18, 1, 0, 0);
 }
 
 inline void ApplyStageSpecificCleanup(LearningStageState& stage)

@@ -27,8 +27,6 @@ struct LearningStageState
     float ClearColor[4] = { 0.11f, 0.13f, 0.07f, 1.0f };
     ComPtr<ID3D12RootSignature> RootSignature;
     ComPtr<ID3D12PipelineState> PipelineState;
-    ComPtr<ID3D12Resource> VertexUploadBuffer;
-    ComPtr<ID3D12Resource> IndexUploadBuffer;
     ComPtr<ID3D12Resource> VertexDefaultBuffer;
     ComPtr<ID3D12Resource> IndexDefaultBuffer;
     D3D12_VERTEX_BUFFER_VIEW VertexBufferView = {};
@@ -163,10 +161,12 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
     defaultHeap.Type = D3D12_HEAP_TYPE_DEFAULT;
     D3D12_RESOURCE_DESC vertexDesc = BufferDesc(vertexBufferSize);
     D3D12_RESOURCE_DESC indexDesc = BufferDesc(indexBufferSize);
-    StageThrowIfFailed(device->CreateCommittedResource(&uploadHeap, D3D12_HEAP_FLAG_NONE, &vertexDesc, D3D12_RESOURCE_STATE_GENERIC_READ, nullptr, IID_PPV_ARGS(&stage.VertexUploadBuffer)), "Vertex upload buffer creation failed.");
-    StageThrowIfFailed(device->CreateCommittedResource(&uploadHeap, D3D12_HEAP_FLAG_NONE, &indexDesc, D3D12_RESOURCE_STATE_GENERIC_READ, nullptr, IID_PPV_ARGS(&stage.IndexUploadBuffer)), "Index upload buffer creation failed.");
-    FillUploadBuffer(stage.VertexUploadBuffer.Get(), vertices, vertexBufferSize);
-    FillUploadBuffer(stage.IndexUploadBuffer.Get(), indices, indexBufferSize);
+    ComPtr<ID3D12Resource> vertexUploadBuffer;
+    ComPtr<ID3D12Resource> indexUploadBuffer;
+    StageThrowIfFailed(device->CreateCommittedResource(&uploadHeap, D3D12_HEAP_FLAG_NONE, &vertexDesc, D3D12_RESOURCE_STATE_GENERIC_READ, nullptr, IID_PPV_ARGS(&vertexUploadBuffer)), "Vertex upload buffer creation failed.");
+    StageThrowIfFailed(device->CreateCommittedResource(&uploadHeap, D3D12_HEAP_FLAG_NONE, &indexDesc, D3D12_RESOURCE_STATE_GENERIC_READ, nullptr, IID_PPV_ARGS(&indexUploadBuffer)), "Index upload buffer creation failed.");
+    FillUploadBuffer(vertexUploadBuffer.Get(), vertices, vertexBufferSize);
+    FillUploadBuffer(indexUploadBuffer.Get(), indices, indexBufferSize);
 
     StageThrowIfFailed(device->CreateCommittedResource(&defaultHeap, D3D12_HEAP_FLAG_NONE, &vertexDesc, D3D12_RESOURCE_STATE_COPY_DEST, nullptr, IID_PPV_ARGS(&stage.VertexDefaultBuffer)), "Vertex default buffer creation failed.");
     StageThrowIfFailed(device->CreateCommittedResource(&defaultHeap, D3D12_HEAP_FLAG_NONE, &indexDesc, D3D12_RESOURCE_STATE_COPY_DEST, nullptr, IID_PPV_ARGS(&stage.IndexDefaultBuffer)), "Index default buffer creation failed.");
@@ -180,8 +180,8 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
     ComPtr<ID3D12GraphicsCommandList> list;
     StageThrowIfFailed(device->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, allocator.Get(), nullptr, IID_PPV_ARGS(&list)), "Copy command list creation failed.");
 
-    list->CopyResource(stage.VertexDefaultBuffer.Get(), stage.VertexUploadBuffer.Get());
-    list->CopyResource(stage.IndexDefaultBuffer.Get(), stage.IndexUploadBuffer.Get());
+    list->CopyResource(stage.VertexDefaultBuffer.Get(), vertexUploadBuffer.Get());
+    list->CopyResource(stage.IndexDefaultBuffer.Get(), indexUploadBuffer.Get());
     D3D12_RESOURCE_BARRIER barriers[2] = {};
     barriers[0].Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
     barriers[0].Transition.pResource = stage.VertexDefaultBuffer.Get();
@@ -236,8 +236,6 @@ inline void ApplyStageSpecificCleanup(LearningStageState& stage)
 {
     stage.IndexDefaultBuffer.Reset();
     stage.VertexDefaultBuffer.Reset();
-    stage.IndexUploadBuffer.Reset();
-    stage.VertexUploadBuffer.Reset();
     stage.PipelineState.Reset();
     stage.RootSignature.Reset();
 }

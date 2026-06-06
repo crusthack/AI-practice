@@ -26,6 +26,7 @@ struct Vertex
 struct LearningStageState
 {
     float ClearColor[4] = { 0.07f, 0.15f, 0.18f, 1.0f };
+    float TimeSeconds = 0.0f;
     ComPtr<ID3D12RootSignature> RootSignature;
     ComPtr<ID3D12PipelineState> PipelineState;
     ComPtr<ID3D12DescriptorHeap> SrvHeap;
@@ -103,14 +104,20 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
     srvRange.BaseShaderRegister = 0;
     srvRange.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
 
-    D3D12_ROOT_PARAMETER rootParameter = {};
-    rootParameter.ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
-    rootParameter.DescriptorTable.NumDescriptorRanges = 1;
-    rootParameter.DescriptorTable.pDescriptorRanges = &srvRange;
-    rootParameter.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+    D3D12_ROOT_PARAMETER rootParameters[2] = {};
+    rootParameters[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
+    rootParameters[0].DescriptorTable.NumDescriptorRanges = 1;
+    rootParameters[0].DescriptorTable.pDescriptorRanges = &srvRange;
+    rootParameters[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+    // Parameter 1: 1-DWORD root constant at b0 for gTime (vertex shader UV scroll).
+    rootParameters[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_32BIT_CONSTANTS;
+    rootParameters[1].Constants.ShaderRegister = 0;
+    rootParameters[1].Constants.RegisterSpace = 0;
+    rootParameters[1].Constants.Num32BitValues = 1;
+    rootParameters[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_VERTEX;
 
     D3D12_STATIC_SAMPLER_DESC sampler = {};
-    sampler.Filter = D3D12_FILTER_MIN_MAG_MIP_POINT;
+    sampler.Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR;
     sampler.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
     sampler.AddressV = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
     sampler.AddressW = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
@@ -119,8 +126,8 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
     sampler.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 
     D3D12_ROOT_SIGNATURE_DESC rootSignatureDesc = {};
-    rootSignatureDesc.NumParameters = 1;
-    rootSignatureDesc.pParameters = &rootParameter;
+    rootSignatureDesc.NumParameters = 2;
+    rootSignatureDesc.pParameters = rootParameters;
     rootSignatureDesc.NumStaticSamplers = 1;
     rootSignatureDesc.pStaticSamplers = &sampler;
     rootSignatureDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
@@ -189,12 +196,30 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
     constexpr UINT textureWidth = 64;
     constexpr UINT textureHeight = 64;
     std::array<uint32_t, textureWidth * textureHeight> pixels = {};
+    // Horizontal rainbow: hue sweeps 0→1 across X, fully saturated, brightness varies by Y.
     for (UINT y = 0; y < textureHeight; ++y)
     {
         for (UINT x = 0; x < textureWidth; ++x)
         {
-            const bool bright = ((x / 8 + y / 8) % 2) == 0;
-            pixels[y * textureWidth + x] = bright ? 0xfff2d15c : 0xff2166d1;
+            const float h = static_cast<float>(x) / static_cast<float>(textureWidth - 1); // 0..1
+            const float v = 0.55f + 0.45f * (1.0f - static_cast<float>(y) / static_cast<float>(textureHeight - 1));
+            const float c = v;
+            const float X = c * (1.0f - fabsf(fmodf(h * 6.0f, 2.0f) - 1.0f));
+            float r = 0, g = 0, b = 0;
+            const int sector = static_cast<int>(h * 6.0f);
+            switch (sector % 6)
+            {
+            case 0: r=c; g=X; break;
+            case 1: r=X; g=c; break;
+            case 2: g=c; b=X; break;
+            case 3: g=X; b=c; break;
+            case 4: r=X; b=c; break;
+            default: r=c; b=X; break;
+            }
+            const uint8_t R = static_cast<uint8_t>(r * 255.0f);
+            const uint8_t G = static_cast<uint8_t>(g * 255.0f);
+            const uint8_t B = static_cast<uint8_t>(b * 255.0f);
+            pixels[y * textureWidth + x] = 0xff000000u | (B << 16) | (G << 8) | R;
         }
     }
 
@@ -276,11 +301,7 @@ inline void ApplyStageSpecificSetup(LearningStageState& stage, ID3D12Device* dev
 
 inline void UpdateStageSpecificDemo(LearningStageState& stage, double timeSeconds)
 {
-    (void)timeSeconds;
-    stage.ClearColor[0] = 0.07f;
-    stage.ClearColor[1] = 0.15f;
-    stage.ClearColor[2] = 0.18f;
-    stage.ClearColor[3] = 1.0f;
+    stage.TimeSeconds = static_cast<float>(timeSeconds);
 }
 
 inline void ApplyStageSpecificRender(LearningStageState& stage, const LearningStageRenderContext& context)
@@ -291,6 +312,7 @@ inline void ApplyStageSpecificRender(LearningStageState& stage, const LearningSt
     ID3D12DescriptorHeap* heaps[] = { stage.SrvHeap.Get() };
     context.CommandList->SetDescriptorHeaps(1, heaps);
     context.CommandList->SetGraphicsRootDescriptorTable(0, stage.SrvHeap->GetGPUDescriptorHandleForHeapStart());
+    context.CommandList->SetGraphicsRoot32BitConstants(1, 1, &stage.TimeSeconds, 0);
     D3D12_VIEWPORT viewport = { 0.0f, 0.0f, static_cast<float>(context.Width), static_cast<float>(context.Height), 0.0f, 1.0f };
     D3D12_RECT scissorRect = { 0, 0, static_cast<LONG>(context.Width), static_cast<LONG>(context.Height) };
     context.CommandList->RSSetViewports(1, &viewport);
