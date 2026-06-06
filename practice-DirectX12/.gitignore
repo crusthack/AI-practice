@@ -1,0 +1,17 @@
+# Visual Studio / MSBuild outputs
+**/x64/
+**/x86/
+**/Debug/
+**/Release/
+**/bin/
+**/obj/
+**/.vs/
+
+# C++ intermediate files
+*.obj
+*.pdb
+*.ilk
+*.idb
+*.tlog
+*.lastbuildstate
+*.log

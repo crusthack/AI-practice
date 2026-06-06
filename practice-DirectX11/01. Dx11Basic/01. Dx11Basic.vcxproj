@@ -139,7 +139,20 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\common\D3DApp.cpp" />
+    <ClCompile Include="..\common\DeviceResources.cpp" />
+    <ClCompile Include="..\common\ShaderUtils.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\common\D3DApp.h" />
+    <ClInclude Include="..\common\DeviceResources.h" />
+    <ClInclude Include="..\common\ShaderUtils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClearTriangle.hlsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

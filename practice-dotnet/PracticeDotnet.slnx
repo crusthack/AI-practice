@@ -3,21 +3,103 @@
     <Project Path="1. CSharpBasics/Tests/Tests.csproj" />
     <Project Path="1. CSharpBasics/Benchmarks/CSharpBench.csproj" />
   </Folder>
-  <Folder Name="/2. HostBuilder/">
-    <Project Path="2. HostBuilder/Tests/Tests.csproj" />
-    <Project Path="2. HostBuilder/Benchmarks/HostBench.csproj" />
+  <Folder Name="/2. TypeSystem/">
+    <Project Path="2. TypeSystem/Tests/Tests.csproj" />
+    <Project Path="2. TypeSystem/Benchmarks/TypeBench.csproj" />
   </Folder>
-  <Folder Name="/3. Logger/">
-    <Project Path="3. Logger/Tests/Tests.csproj" />
-    <Project Path="3. Logger/Benchmarks/LogBench.csproj" />
+  <Folder Name="/3. OOP/">
+    <Project Path="3. OOP/Tests/Tests.csproj" />
+    <Project Path="3. OOP/Benchmarks/OopBench.csproj" />
   </Folder>
-  <Folder Name="/4. MultiThreading/">
-    <Project Path="4. MultiThreading/Tests/Tests.csproj" />
-    <Project Path="4. MultiThreading/Benchmarks/MTBench.csproj" />
-    <Project Path="4. MultiThreading/FSharpLib/FSharpLib.fsproj" />
+  <Folder Name="/4. Iteration/">
+    <Project Path="4. Iteration/Tests/Tests.csproj" />
+    <Project Path="4. Iteration/Benchmarks/IterBench.csproj" />
+  </Folder>
+  <Folder Name="/5. Containers/">
+    <Project Path="5. Containers/Tests/Tests.csproj" />
+    <Project Path="5. Containers/Benchmarks/ContBench.csproj" />
+  </Folder>
+  <Folder Name="/6. ExceptionHandling/">
+    <Project Path="6. ExceptionHandling/Tests/Tests.csproj" />
+    <Project Path="6. ExceptionHandling/Benchmarks/ExBench.csproj" />
+  </Folder>
+  <Folder Name="/7. StringsAndIO/">
+    <Project Path="7. StringsAndIO/Tests/Tests.csproj" />
+    <Project Path="7. StringsAndIO/Benchmarks/SIOBench.csproj" />
+  </Folder>
+  <Folder Name="/8. Memory/">
+    <Project Path="8. Memory/Tests/Tests.csproj" />
+    <Project Path="8. Memory/Benchmarks/MemBench.csproj" />
+  </Folder>
+  <Folder Name="/9. Async/">
+    <Project Path="9. Async/Tests/Tests.csproj" />
+    <Project Path="9. Async/Benchmarks/AsyncBench.csproj" />
+  </Folder>
+  <Folder Name="/10. Concurrency/">
+    <Project Path="10. Concurrency/Tests/Tests.csproj" />
+    <Project Path="10. Concurrency/Benchmarks/MTBench.csproj" />
+    <Project Path="10. Concurrency/FSharpLib/FSharpLib.fsproj" />
+  </Folder>
+  <Folder Name="/11. HostBuilder/">
+    <Project Path="11. HostBuilder/Tests/Tests.csproj" />
+    <Project Path="11. HostBuilder/Benchmarks/HostBench.csproj" />
+  </Folder>
+  <Folder Name="/12. Logger/">
+    <Project Path="12. Logger/Tests/Tests.csproj" />
+    <Project Path="12. Logger/Benchmarks/LogBench.csproj" />
+  </Folder>
+  <Folder Name="/13. Testing/">
+    <Project Path="13. Testing/Tests/Tests.csproj" />
+  </Folder>
+  <Folder Name="/14. HttpClient/">
+    <Project Path="14. HttpClient/Tests/Tests.csproj" />
+    <Project Path="14. HttpClient/Benchmarks/HttpBench.csproj" />
+  </Folder>
+  <Folder Name="/15. AspNetCore/">
+    <Project Path="15. AspNetCore/Tests/Tests.csproj" />
+  </Folder>
+  <Folder Name="/16. EFCore/">
+    <Project Path="16. EFCore/Tests/Tests.csproj" />
+  </Folder>
+  <Folder Name="/17. Architecture/">
+    <Project Path="17. Architecture/Tests/Tests.csproj" />
+  </Folder>
+  <Folder Name="/18. FSharpFunctional/">
+    <Project Path="18. FSharpFunctional/Tests/Tests.fsproj" />
+  </Folder>
+  <Folder Name="/19. Roslyn/">
+    <Project Path="19. Roslyn/Analyzer/Analyzer.csproj" />
+    <Project Path="19. Roslyn/Generator/Generator.csproj" />
+    <Project Path="19. Roslyn/Consumer/Consumer.csproj" />
+    <Project Path="19. Roslyn/Tests/Tests.csproj" />
+    <Project Path="19. Roslyn/Benchmarks/RoslynBench.csproj" />
+  </Folder>
+  <Folder Name="/20. NativeAOT/">
+    <Project Path="20. NativeAOT/Tests/Tests.csproj" />
+    <Project Path="20. NativeAOT/Benchmarks/AotBench.csproj" />
+  </Folder>
+  <Folder Name="/21. Observability/">
+    <Project Path="21. Observability/Tests/Tests.csproj" />
   </Folder>
   <Project Path="1. CSharpBasics/1. CSharpBasics.csproj" />
-  <Project Path="2. HostBuilder/2. HostBuilder.csproj" />
-  <Project Path="3. Logger/3. Logger.csproj" />
-  <Project Path="4. MultiThreading/4. MultiThreading.csproj" />
+  <Project Path="2. TypeSystem/2. TypeSystem.csproj" />
+  <Project Path="3. OOP/3. OOP.csproj" />
+  <Project Path="4. Iteration/4. Iteration.csproj" />
+  <Project Path="5. Containers/5. Containers.csproj" />
+  <Project Path="6. ExceptionHandling/6. ExceptionHandling.csproj" />
+  <Project Path="7. StringsAndIO/7. StringsAndIO.csproj" />
+  <Project Path="8. Memory/8. Memory.csproj" />
+  <Project Path="9. Async/9. Async.csproj" />
+  <Project Path="10. Concurrency/10. Concurrency.csproj" />
+  <Project Path="11. HostBuilder/11. HostBuilder.csproj" />
+  <Project Path="12. Logger/12. Logger.csproj" />
+  <Project Path="13. Testing/13. Testing.csproj" />
+  <Project Path="14. HttpClient/14. HttpClient.csproj" />
+  <Project Path="15. AspNetCore/15. AspNetCore.csproj" />
+  <Project Path="16. EFCore/16. EFCore.csproj" />
+  <Project Path="17. Architecture/17. Architecture.csproj" />
+  <Project Path="18. FSharpFunctional/18. FSharpFunctional.fsproj" />
+  <Project Path="19. Roslyn/19. Roslyn.csproj" />
+  <Project Path="20. NativeAOT/20. NativeAOT.csproj" />
+  <Project Path="21. Observability/21. Observability.csproj" />
 </Solution>

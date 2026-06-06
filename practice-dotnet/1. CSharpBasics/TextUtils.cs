@@ -19,6 +19,13 @@ public static class TextUtils
 
     public static string Truncate(string text, int maxLength, string ellipsis = "...")
     {
+        ArgumentNullException.ThrowIfNull(text);
+        ArgumentNullException.ThrowIfNull(ellipsis);
+        ArgumentOutOfRangeException.ThrowIfNegative(maxLength);
+
+        if (ellipsis.Length > maxLength)
+            throw new ArgumentException("Ellipsis length cannot exceed maxLength.", nameof(ellipsis));
+
         if (text.Length <= maxLength) return text;
         return text[..(maxLength - ellipsis.Length)] + ellipsis;
     }

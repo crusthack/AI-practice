@@ -27,6 +27,14 @@ public class TextUtilsTests
     public void Truncate_TruncatesCorrectly(string input, int max, string expected) =>
         Assert.Equal(expected, TextUtils.Truncate(input, max));
 
+    [Fact]
+    public void Truncate_ThrowsWhenMaxLengthIsNegative() =>
+        Assert.Throws<ArgumentOutOfRangeException>(() => TextUtils.Truncate("Hello", -1));
+
+    [Fact]
+    public void Truncate_ThrowsWhenEllipsisIsLongerThanMaxLength() =>
+        Assert.Throws<ArgumentException>(() => TextUtils.Truncate("Hello", 2));
+
     [Theory]
     [InlineData("hello world", 2)]
     [InlineData("  spaces  ",  1)]
