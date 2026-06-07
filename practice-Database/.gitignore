@@ -1,0 +1,18 @@
+# .NET / dotnet
+bin/
+obj/
+*.user
+.vs/
+*.db
+*.db-shm
+*.db-wal
+*.log
+
+# NuGet
+packages/
+*.nupkg
+project.lock.json
+project.assets.json
+
+# Migrations (선택적 — 보통은 커밋함)
+# Migrations/
