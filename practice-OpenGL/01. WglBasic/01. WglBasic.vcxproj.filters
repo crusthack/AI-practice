@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0f08dc8d-efb2-4c3e-bca5-773630652efe}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{602ff439-cbbf-4fb0-8eaf-d3093f9235e3}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx</Extensions>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{d74b7d8f-d40a-40b2-8318-24a149954ca0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{9407f8a2-4102-4e52-b594-8a6b8473ee99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{6fdc2c3c-7d0e-4b3e-8cf2-5942f31e918d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LearningStage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\LearningStages.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\OpenGLApp.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\OpenGLRuntime.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+    <None Include="shaders\README.md">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="shaders\WglBasic.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="assets\README.md">
+      <Filter>Assets</Filter>
+    </None>
+  </ItemGroup>
+</Project>

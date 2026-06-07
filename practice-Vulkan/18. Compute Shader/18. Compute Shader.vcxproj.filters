@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files"><UniqueIdentifier>{3b4e2e0d-ae07-4be1-bd85-e775c6ecf11c}</UniqueIdentifier><Extensions>cpp;c;cc;cxx</Extensions></Filter>
+    <Filter Include="Header Files"><UniqueIdentifier>{08d5b09c-0a41-47f7-a490-df72b56d7c76}</UniqueIdentifier><Extensions>h;hpp;hxx</Extensions></Filter>
+    <Filter Include="Shaders"><UniqueIdentifier>{72ad61f1-98ed-42df-b64c-5968fd743d64}</UniqueIdentifier></Filter>
+    <Filter Include="Assets"><UniqueIdentifier>{9ac0b10d-bd79-4c34-805c-570a801c7a20}</UniqueIdentifier></Filter>
+  </ItemGroup>
+  <ItemGroup><ClCompile Include="main.cpp"><Filter>Source Files</Filter></ClCompile></ItemGroup>
+  <ItemGroup><ClInclude Include="LearningStage.h"><Filter>Header Files</Filter></ClInclude></ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+    <None Include="shaders\README.md"><Filter>Shaders</Filter></None>
+    <None Include="shaders\Compute Shader.vert.glsl"><Filter>Shaders</Filter></None>
+    <None Include="shaders\Compute Shader.frag.glsl"><Filter>Shaders</Filter></None>
+    <None Include="assets\README.md"><Filter>Assets</Filter></None>
+  </ItemGroup>
+</Project>
