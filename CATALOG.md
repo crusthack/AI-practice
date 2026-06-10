@@ -22,7 +22,7 @@
 | 디렉토리 | 언어 | 상태 | 모듈 수 | 요약 |
 | --- | --- | --- | --- | --- |
 | `practice-Win32` | C++ | ✅ | 44 | Win32 API, COM, 보안, Winsock, IPC, 디버깅, Hook |
-| `practice-OpertingSystem` | C++ | 🔵 | 0/20 | 프로세스·스레드·메모리·동기화·I/O·IPC 심화 |
+| `practice-OpertingSystem` | C++ | 🔵 | 0/27 | NT 커널: 프로세스(EPROCESS·PEB)·스케줄러(KTHREAD·IRQL)·가상메모리(페이지테이블·PFN)·동시성(TSO·MESI·Lock-Free)·I/O·IPC |
 | `practice-Network` | C++ | 🔵 | 0/18 | Winsock2, IO 모델, IOCP, 프로토콜 구현, TLS |
 
 ### 그래픽스
@@ -33,6 +33,7 @@
 | `practice-DirectX12` | C++ | ✅ | 27 | D3D12 커맨드 큐, 디스크립터 힙, 동기화 |
 | `practice-OpenGL` | C++ | ✅ | 27 | OpenGL 코어, VAO/VBO, GLSL, 프레임버퍼 |
 | `practice-Vulkan` | C++ | ✅ | 27 | Vulkan 인스턴스, 렌더패스, 파이프라인, 메모리 |
+| `practice-WebGL` | JavaScript | 🔵 | 5/27 | WebGL2 컨텍스트, 셰이더, VBO/EBO/VAO, 텍스처, FBO, Transform Feedback |
 
 ### .NET / C\#
 
@@ -46,6 +47,18 @@
 | 디렉토리 | 언어 | 상태 | 모듈 수 | 요약 |
 | --- | --- | --- | --- | --- |
 | `practice-Windows` | PowerShell | ✅ | 10 | CMD, PowerShell, 파일시스템, 레지스트리, 네트워크 |
+
+### AI / 머신러닝 / 딥러닝
+
+| 디렉토리 | 언어 | 상태 | 모듈 수 | 요약 |
+| --- | --- | --- | --- | --- |
+| `practice-AI` | Python | 🔵 | 0/24 | NumPy·Pandas·Matplotlib, scikit-learn, TensorFlow/Keras, 고급 DL, 프로젝트 |
+
+### WebAssembly
+
+| 디렉토리 | 언어 | 상태 | 모듈 수 | 요약 |
+| --- | --- | --- | --- | --- |
+| `practice-wasm` | JavaScript / Rust / C | 🔵 | 0/6 | WebAssembly 런타임, WAT, linear memory, wasm-bindgen, WASI |
 
 ---
 
@@ -83,7 +96,7 @@
 | --- | --- | --- |
 | `practice-CUDA` | C++ + CUDA | GPU 커널, 메모리 계층, 병렬 리덕션 |
 | `practice-ComputeShader` | HLSL / GLSL | D3D12 또는 Vulkan Compute shader 실습 |
-| `practice-Concurrency` | C++ 또는 C# | Lock-Free, 채널, 작업 기반 병렬, 메모리 모델 |
+| `practice-Concurrency` | C++ 또는 C# | 채널, 작업 기반 병렬, CUDA 통합 병렬 (x86 메모리 모델·Lock-Free·캐시 일관성은 practice-OpertingSystem Phase 4 심화에서 다룸) |
 
 ### 인프라 / DevOps
 

@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: #1d1f24;
+  background: #f6f7f9;
+}
+
+main {
+  width: min(760px, calc(100vw - 32px));
+  margin: 48px auto;
+}
+
+.panel {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid #d9dde5;
+  border-radius: 8px;
+  background: white;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+
+input,
+button,
+output {
+  min-height: 40px;
+  font: inherit;
+}
+
+input {
+  padding: 0 10px;
+}
+
+button {
+  border: 0;
+  border-radius: 6px;
+  color: white;
+  background: #2457c5;
+  cursor: pointer;
+}
+
+output,
+pre {
+  padding: 12px;
+  border-radius: 6px;
+  background: #eef1f6;
+}
+

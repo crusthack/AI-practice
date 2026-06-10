@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WASM Raw Module</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main>
+      <h1>WebAssembly Raw Module</h1>
+      <section class="panel">
+        <label>
+          A
+          <input id="a" type="number" value="7">
+        </label>
+        <label>
+          B
+          <input id="b" type="number" value="35">
+        </label>
+        <button id="run" type="button">Run add</button>
+        <output id="result">Result: pending</output>
+      </section>
+      <pre id="exports"></pre>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
+

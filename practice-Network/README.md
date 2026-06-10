@@ -1,75 +1,87 @@
-# Network 프로그래밍 학습 저장소
+﻿# Network Protocol Learning Lab
 
-Winsock2를 출발점으로 Windows 소켓 모델, IO 다중화, 프로토콜 구현, TLS, 고급 네트워킹 API까지 단계적으로 학습하기 위한 Visual C++ 실습 모음입니다.
+OSI 7ê³„ì¸µê³¼ TCP/IP 4ê³„ì¸µì„ ê¸°ì¤€ìœ¼ë¡œ ë„¤íŠ¸ì›Œí¬ í”„ë¡œí† ì½œì„ í•™ìŠµí•˜ëŠ” C++ ì‹¤ìŠµ ì €ìž¥ì†Œìž…ë‹ˆë‹¤. Winsock, select, IOCP, WinHTTP ê°™ì€ APIëŠ” í•™ìŠµì˜ ì¤‘ì‹¬ì´ ì•„ë‹ˆë¼ í”„ë¡œí† ì½œì„ ê´€ì°°í•˜ê³  êµ¬í˜„í•˜ê¸° ìœ„í•œ ë„êµ¬ë¡œë§Œ ë‹¤ë£¹ë‹ˆë‹¤.
 
-## 빠른 시작
+## í•™ìŠµ ëª©í‘œ
 
-Visual Studio가 설치된 환경에서 각 Phase 폴더의 `.sln` 또는 개별 `.vcxproj`를 열어 빌드합니다.
+- Ethernet, ARP, IPv4, ICMP, UDP, TCP, HTTP, TLSì˜ ì—­í• ì„ ê³„ì¸µë³„ë¡œ ì„¤ëª…í•©ë‹ˆë‹¤.
+- ê° ê³„ì¸µì˜ headerì™€ payload ê²½ê³„ë¥¼ ì§ì ‘ ì½ìŠµë‹ˆë‹¤.
+- MAC ì£¼ì†Œ, IP ì£¼ì†Œ, port, hostname/pathê°€ ì–´ëŠ ê³„ì¸µì˜ ì‹ë³„ìžì¸ì§€ êµ¬ë¶„í•©ë‹ˆë‹¤.
+- TCP/UDPì˜ ì°¨ì´ë¥¼ APIê°€ ì•„ë‹ˆë¼ protocol guarantee ê¸°ì¤€ìœ¼ë¡œ ì„¤ëª…í•©ë‹ˆë‹¤.
+- TCP stream ìœ„ì—ì„œ application message framingì´ í•„ìš”í•œ ì´ìœ ë¥¼ ì´í•´í•©ë‹ˆë‹¤.
 
-```powershell
-# 예시: Phase 1 전체 빌드
-MSBuild Phase1_SocketBasics\Phase1.sln /p:Configuration=Debug /p:Platform=x64
+## ë¬¸ì„œ
+
+| ë¬¸ì„œ | ìš©ë„ |
+| --- | --- |
+| `docs/ROADMAP.md` | ì „ì²´ í•™ìŠµ ë¡œë“œë§µ |
+| `docs/CURRICULUM.md` | ì±•í„°ë³„ ì»¤ë¦¬í˜ëŸ¼ |
+| `docs/PRACTICE_PLAN.md` | ì„¸ë¶€ ì‹¤ìŠµ ê³„íš |
+| `docs/ASSESSMENT.md` | ì™„ë£Œ ê¸°ì¤€ ì²´í¬ë¦¬ìŠ¤íŠ¸ |
+| `LEARNING_GUIDE.md` | ì••ì¶• ìš”ì•½ ë¡œë“œë§µ |
+| `AGENT_CONTEXT.md` | ì—ì´ì „íŠ¸ ìž‘ì—…ìš© ì €ìž¥ì†Œ ë§¥ë½ |
+| `CLAUDE.md` | Claude/Codex ê³„ì—´ ì—ì´ì „íŠ¸ìš© ìµœì†Œ ê·œì¹™ |
+
+## ë¡œë“œë§µ
+
+| ìˆœì„œ | ê³„ì¸µ | ì£¼ì œ | í´ë” |
+| --- | --- | --- | --- |
+| 1 | Data Link / Link | Ethernet frame, MAC, EtherType, ARP | `01_DataLink_Ethernet_ARP` |
+| 2 | Network / Internet | IPv4, ICMP, TTL, checksum | `02_Network_IP_ICMP` |
+| 3 | Network / Internet | multicast address, group join | `03_Network_Multicast` |
+| 4 | Transport | UDP datagram, port, missing reliability | `04_Transport_UDP` |
+| 5 | Transport | TCP stream, handshake, ACK, teardown | `05_Transport_TCP` |
+| 6 | Session/Presentation ê´€ì  | message framing, binary protocol, byte order | `06_Framing_BinaryProtocol` |
+| 7 | Application | HTTP request/response, headers, body, keep-alive | `07_Application_HTTP` |
+| 8 | Security/Presentation ê´€ì  | TLS handshake, certificate, encrypted record | `08_Security_TLS` |
+| 9 | êµ¬í˜„ ë³´ì¡° | select, event, overlapped IO, IOCP | `09_Implementation_IOModels` |
+| 10 | í”Œëž«í¼ API | WinHTTP, WebSocket, Named Pipe | `10_Platform_WinNetAPI` |
+
+## ë²ˆí˜¸ ê·œì¹™
+
+- ìµœìƒìœ„ í´ë”ëŠ” ë¡œë“œë§µ ìˆœì„œë¥¼ ë”°ë¦…ë‹ˆë‹¤.
+- ê° ì±•í„° ë‚´ë¶€ í”„ë¡œì íŠ¸ëŠ” `01`, `02`, `03`ì²˜ëŸ¼ ë‹¤ì‹œ ì‹œìž‘í•©ë‹ˆë‹¤.
+- `Labs` ë‚´ë¶€ ì‹¤ìŠµë„ `Lab01`, `Lab02`, `Lab03`ì²˜ëŸ¼ ë‹¤ì‹œ ì‹œìž‘í•©ë‹ˆë‹¤.
+- ì˜ˆ: `05_Transport_TCP/01_TCP_Server`, `05_Transport_TCP/02_TCP_Client`, `05_Transport_TCP/Labs/Lab01_TCP_Echo`
+
+## í”„ë¡œì íŠ¸ êµ¬ì¡°
+
+```text
+practice-Network/
+  01_DataLink_Ethernet_ARP/
+  02_Network_IP_ICMP/
+  03_Network_Multicast/
+  04_Transport_UDP/
+  05_Transport_TCP/
+  06_Framing_BinaryProtocol/
+  07_Application_HTTP/
+  08_Security_TLS/
+  09_Implementation_IOModels/
+  10_Platform_WinNetAPI/
+  docs/
 ```
 
-링커에 `ws2_32.lib`가 포함되어야 합니다. 각 프로젝트 속성 → 링커 → 추가 종속성에 `ws2_32.lib`를 추가하거나 소스 상단에 `#pragma comment(lib, "ws2_32.lib")`를 사용합니다.
+## í•™ìŠµ ë°©ì‹
 
-## 문서 구조
+1. `docs/ROADMAP.md`ë¡œ ì „ì²´ ìˆœì„œë¥¼ í™•ì¸í•©ë‹ˆë‹¤.
+2. `docs/CURRICULUM.md`ì—ì„œ í•´ë‹¹ ì±•í„°ì˜ ëª©í‘œë¥¼ ì½ìŠµë‹ˆë‹¤.
+3. ê° í”„ë¡œì íŠ¸ í´ë”ì˜ `README.md`ë¥¼ ë³´ê³  ì‹¤í–‰í•©ë‹ˆë‹¤.
+4. header fieldì™€ payload boundaryë¥¼ ì§ì ‘ í‘œì‹œí•©ë‹ˆë‹¤.
+5. ê°€ëŠ¥í•˜ë©´ Wireshark ìº¡ì²˜ì™€ í”„ë¡œê·¸ëž¨ ì¶œë ¥ì„ ë¹„êµí•©ë‹ˆë‹¤.
+6. `docs/ASSESSMENT.md`ì˜ ì²´í¬ë¦¬ìŠ¤íŠ¸ë¥¼ ì±„ì›ë‹ˆë‹¤.
 
-| 문서 | 용도 |
-| --- | --- |
-| `README.md` | 저장소 개요, 빌드 방법, 전체 목차 |
-| `CLAUDE.md` | 에이전트 작업 지침 및 컨벤션 |
-| `LEARNING_GUIDE.md` | 모듈별 학습 교안, 실습 절차, 확장 과제 |
+## ë¹Œë“œ
 
-## 전체 로드맵
+ê° ì˜ˆì œëŠ” ë…ë¦½ì ì¸ Visual Studio C++ í”„ë¡œì íŠ¸ìž…ë‹ˆë‹¤. Visual Studioì—ì„œ `.vcxproj`ë¥¼ ì—´ê±°ë‚˜, MSBuildê°€ PATHì— ìž¡í˜€ ìžˆìœ¼ë©´ ë‹¤ìŒì²˜ëŸ¼ ë¹Œë“œí•©ë‹ˆë‹¤.
 
-| Phase | 폴더 | 학습 주제 |
-| --- | --- | --- |
-| Phase 1 | `Phase1_SocketBasics` | TCP/UDP 소켓 생성, 바인드, 연결, 에코 서버/클라이언트 |
-| Phase 2 | `Phase2_IOModels` | select, WSAEventSelect, Overlapped I/O, IOCP |
-| Phase 3 | `Phase3_Protocols` | HTTP/1.1 파싱, 커스텀 바이너리 프로토콜, TLS(Schannel) |
-| Phase 4 | `Phase4_Advanced` | 멀티캐스트, Raw 소켓, TCP 프록시/릴레이 |
-| Phase 5 | `Phase5_WinNetAPI` | WinHTTP, WebSocket, Named Pipe 네트워크 |
+```powershell
+MSBuild 01_DataLink_Ethernet_ARP\01_Ethernet_ARP_Frame\01_Ethernet_ARP_Frame.vcxproj /p:Configuration=Debug /p:Platform=x64
+```
 
-## 모듈 목차
+## ì£¼ì˜ì‚¬í•­
 
-### Phase 1: 소켓 기초
-
-- `01_TCP_Server` — `bind` → `listen` → `accept` → `recv`/`send` 루프
-- `02_TCP_Client` — `connect` 후 메시지 송수신, graceful shutdown
-- `03_UDP_Echo` — 비연결 UDP 에코 서버/클라이언트
-- `04_Socket_Options` — `SO_KEEPALIVE`, `TCP_NODELAY`, `SO_RCVTIMEO`, `SO_REUSEADDR`
-
-### Phase 2: IO 모델
-
-- `05_Select_Model` — `select()`로 다수 소켓 모니터링
-- `06_WSAEventSelect` — `WSAEventSelect` + `WaitForMultipleObjects` 패턴
-- `07_OverlappedIO` — `WSASend`/`WSARecv` Overlapped 구조체 기반 비동기 IO
-- `08_IOCP` — I/O Completion Port, 워커 스레드 풀, Completion Key 패턴
-
-### Phase 3: 프로토콜 구현
-
-- `09_HTTP_Client` — Raw 소켓으로 HTTP/1.1 GET/POST 요청 파싱
-- `10_HTTP_Server` — 멀티스레드 HTTP 서버, Content-Type 분기
-- `11_Custom_Protocol` — 고정 헤더 + 가변 페이로드 바이너리 프로토콜
-- `12_TLS_Schannel` — Schannel SSPI로 TLS 핸드셰이크 및 암호화 통신
-
-### Phase 4: 고급 네트워킹
-
-- `13_Multicast` — IP 멀티캐스트 그룹 참가/탈퇴, TTL 설정
-- `14_RawSocket` — Raw 소켓으로 IP/ICMP 헤더 접근 (관리자 권한 필요)
-- `15_TCP_Relay` — 클라이언트 ↔ 릴레이 ↔ 백엔드 TCP 프록시 구현
-
-### Phase 5: Windows 네트워크 API
-
-- `16_WinHTTP` — `WinHttpOpen` / `WinHttpSendRequest` / 응답 스트리밍
-- `17_WebSocket` — WinHTTP WebSocket 업그레이드, 메시지 프레임 송수신
-- `18_NamedPipe_Net` — Named Pipe 서버/클라이언트 IPC (네트워크 비교 실습)
-
-## 권장 학습 방식
-
-1. `LEARNING_GUIDE.md`에서 해당 모듈의 목표와 관찰 포인트를 읽습니다.
-2. `main.cpp`에서 API 호출 순서를 따라갑니다.
-3. Wireshark 또는 네트워크 모니터로 실제 패킷을 캡처해 비교합니다.
-4. 오류 발생 시 `WSAGetLastError()` 코드를 확인합니다.
-5. 확장 과제를 구현하고 전체 빌드 후 동작을 검증합니다.
+- Raw socket ì‹¤ìŠµì€ ê´€ë¦¬ìž ê¶Œí•œì´ í•„ìš”í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+- TLS/Schannel ì‹¤ìŠµì€ `secur32.lib`ê°€ í•„ìš”í•©ë‹ˆë‹¤.
+- WinHTTP/WebSocket ì‹¤ìŠµì€ `winhttp.lib`ê°€ í•„ìš”í•©ë‹ˆë‹¤.
+- ì™¸ë¶€ ë„¤íŠ¸ì›Œí¬ê°€ í•„ìš”í•œ ì‹¤ìŠµì€ í™˜ê²½ì— ë”°ë¼ ì‹¤íŒ¨í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+- ë¹Œë“œ ì‚°ì¶œë¬¼ì€ ì €ìž¥ì†Œì— í¬í•¨í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.

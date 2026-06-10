@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>26 - Stats And Debug</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0d0d0d;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Courier New', monospace;
+      color: #ccc;
+    }
+    canvas { width: 800px; height: 600px; display: block; border: 1px solid #333; }
+    #info  { margin-top: 10px; font-size: 13px; color: #888; }
+    #shader-editor {
+      margin-top: 12px;
+      width: 800px;
+    }
+    #shader-editor textarea {
+      width: 100%;
+      height: 120px;
+      background: #111;
+      color: #9f9;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      border: 1px solid #444;
+      padding: 6px;
+      resize: vertical;
+    }
+    #shader-editor button {
+      margin-top: 4px;
+      background: #222;
+      color: #aaa;
+      border: 1px solid #555;
+      padding: 4px 12px;
+      cursor: pointer;
+      font-family: 'Courier New', monospace;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <div id="info">26 - Stats And Debug | Live FPS / draw calls / triangle count + shader editor</div>
+  <div id="shader-editor">
+    <textarea id="frag-src"></textarea>
+    <button id="recompile">Recompile Shader</button>
+  </div>
+  <script src="../common/math.js"></script>
+  <script src="../common/webgl-utils.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+target/
+pkg/
+dist/
+build/
+*.wasm
+*.wasm.map
+node_modules/
+
